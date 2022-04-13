@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS nmn_db;
+
+CREATE DATABASE nmn_db;
