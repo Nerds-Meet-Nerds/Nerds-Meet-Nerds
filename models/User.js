@@ -21,14 +21,42 @@ User.init(
             allowNull: false,
             unique: true
         },
+
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate:{
+                len:[8]
+            }
+        },
+        nerd_type_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'nerd_type',
+                key: 'id'
+            }
+        },
+        liked_ids: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'user',
+                key: 'id'
+            }
+        },
+        disliked_ids: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'user',
+                key: 'id'
+            }
         email: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true
         },
-        password: {
-            type: DataTypes.STRING
-        }
     },
     {
         hooks: {
