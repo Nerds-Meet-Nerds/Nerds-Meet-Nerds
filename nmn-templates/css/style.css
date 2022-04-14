@@ -1,3 +1,5 @@
+/* Landing Page */
+
 /* #main-container {
     background-color: aquamarine;
 } */
@@ -260,3 +262,23 @@
         font-size: 18%;
     }
 }
+
+
+/* header */
+#navbar-main {
+    display: flex;
+    /* align-items: flex-end; */
+    justify-content: flex-end;
+}
+    #navbar-ul {
+        
+    }
+        #navbar-li {
+            /* margin-right: -10rem; */
+        }
+            #navbar-a{
+                /* padding: ; */
+            }
+                #navbar-item {
+                    width: 50%;
+                }
