@@ -1,0 +1,262 @@
+/* #main-container {
+    background-color: aquamarine;
+} */
+
+    #top {
+        /* border: 5px solid rgb(255, 0, 0); */
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+        /* #logo-container {
+            border: 1px solid black;
+            padding: 2rem;
+        } */
+
+            #logo {
+                /* border: 1px solid black; */
+                margin-top: -1rem;
+                /* height: 12rem; */
+                width: 35%;
+                min-width: 12rem;
+            }
+
+        #load-player-container {
+            /* border: 1px solid black; */
+            padding: 2rem;
+            text-align: end;
+        }
+
+            #load-player-btn {
+                font-size: 250%;
+                border-radius: 1.5rem;
+                box-shadow: 2px 2px 4px rgb(43, 42, 42);
+                background-color: rgb(255, 236, 24);
+                width: 60%;
+                min-width: 12rem;
+            }
+
+                #load-player {
+                    width: 80%;
+                }
+
+                #login {
+                    font-size: 37%;
+                }
+
+    #middle {
+        /* border: 5px solid rgb(255, 0, 0); */
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-items: center;
+        /* justify-content: center; */
+        height: 80vh;
+    }
+
+        #space {
+            /* border: 1px solid black; */
+            height: 12rem;
+        }
+
+        #level-up {
+            /* border: 1px solid black; */
+            padding: 2rem;
+            text-align: center;
+            /* max-height: 10rem; */
+            height: 12rem;
+            /* width: fit-content; */
+            font-size: 500%;
+            font-family: Silkscreen, Futura, Noto, Verdana, Geneva, Tahoma, sans-serif;
+            margin-bottom: 1rem;
+            flex-grow: 0;
+        }
+
+            #level-up-your-game {
+                width:50%;
+                min-width: 15rem;
+            }
+
+        #new-player-container {
+            /* border: 1px solid black; */
+            padding: 2rem;
+            text-align: center;
+            max-height: 5rem;
+            height: 5rem;
+            width: fit-content;
+            margin-top: 1rem;
+        }
+
+            #new-player-btn {
+                /* border: 1px solid black; */
+                font-size: 250%;
+                border-radius: 1.5rem;
+                box-shadow: 2px 2px 4px rgb(43, 42, 42);
+                background-color: rgb(255, 236, 24);
+                margin-top: 1.5rem;
+                margin-right: 1.5rem;
+                width: 50%;
+                min-width: 12rem;
+            }
+
+                #new-player {
+                    width: 80%;
+                }
+
+                #sign-up {
+                    font-size: 37%;
+                }
+
+/*----------------GENERIC ATTRIBUTES-------------*/
+.hide {
+    display: none;
+}
+
+.display {
+    display: block;
+}
+
+#input {
+    width: 70%;
+}
+
+/*----------------HIDDEN CONTAINERS-------------*/
+#login-prompt {
+    /* border: 1px solid black; */
+    position:absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+    #login-box {
+        background-color: white;
+        border: 1px solid black;
+        height: 30%;
+        width: 30%;
+        min-width: 20rem;
+        min-height: 18rem;
+    }
+        #login-pixel {
+            width: 50%;
+        }
+
+#sign-up-prompt {
+    /* border: 1px solid black; */
+    position:absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+    #sign-up-box {
+        background-color: white;
+        border: 1px solid black;
+        height: 40%;
+        width: 30%;
+        min-width: 20rem;
+        min-height: 25rem;
+    }
+        #sign-up-pixel {
+            width: 50%;
+        }
+
+        /*----------------MEDIA QUERY-------------*/
+        /* TODO: ADD MEDIA QUERY FOR HEIGHT */
+@media (max-width: 8000px) { 
+    #new-player-btn {
+        margin-top: 30rem;
+    }
+}
+
+@media (max-width: 2700px) { 
+    #new-player-btn {
+        margin-top: 15rem;
+    }
+}
+
+@media (max-width: 1950px) { 
+    #new-player-btn {
+        margin-top: 8rem;
+    }
+}
+
+@media (max-width: 1650px) { 
+    #new-player-btn {
+        margin-top: 4rem;
+    }
+}
+
+@media (max-width: 930px) { 
+    #new-player-btn {
+        margin-top: -0.1rem;
+    }
+
+    #space {
+        height: 10rem;
+    }
+}
+
+@media (max-width: 630px) { 
+    #new-player-btn {
+        margin-top: -3rem;
+    }
+
+    #space {
+        height: 6rem;
+    }
+
+    #login {
+        font-size: 30%;
+    }
+
+    #sign-up {
+        font-size: 30%;
+    }
+}
+
+@media (max-width: 550px) { 
+    #logo {
+        min-width: 10rem;
+    }
+
+    #new-player-btn {
+        margin-top: -10rem;
+    }
+
+    #space {
+        height: 3rem;
+    }
+
+    #login {
+        font-size: 23%;
+    }
+
+    #sign-up {
+        font-size: 23%;
+    }
+}
+
+@media (max-width: 379px) { 
+    #new-player-btn {
+        margin-top: -17rem;
+    }
+
+    #space {
+        height: 0.1rem;
+    }
+
+    #login {
+        font-size: 18%;
+    }
+
+    #sign-up {
+        font-size: 18%;
+    }
+}
