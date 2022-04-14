@@ -3,6 +3,7 @@ const sequelize = require('../config/connection');
 
 class Chatroom extends Model {};
 
+
 Chatroom.init(
     {
         id: {
