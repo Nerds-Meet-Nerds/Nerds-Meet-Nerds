@@ -264,21 +264,31 @@
 }
 
 
-/* header */
-#navbar-main {
+/* --------------HEADER---------------- */
+/* #navbar-main {
     display: flex;
-    /* align-items: flex-end; */
+    align-items: flex-end;
     justify-content: flex-end;
-}
-    #navbar-ul {
-        
+} */
+    #navbar-logo {
+        margin-right: 20rem;
     }
-        #navbar-li {
-            /* margin-right: -10rem; */
-        }
-            #navbar-a{
-                /* padding: ; */
-            }
+    /* #navbar-ul {
+        
+    } */
+        /* #navbar-li {
+            margin-right: -10rem;
+        } */
+            /* #navbar-a{
+                padding: ;
+            } */
                 #navbar-item {
-                    width: 50%;
+                    width: 75%;
+                    /* min-width: 5rem; */
                 }
+
+@media (max-width: 980px) {
+    #navbar-logo {
+        margin-right: 0;
+    }
+}
