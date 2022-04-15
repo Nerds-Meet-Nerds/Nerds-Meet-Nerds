@@ -34,13 +34,7 @@ User.init(
                 len:[4]
             }
         },
-        nerd_type_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'nerd_type',
-                key: 'id'
-            }
-        }
+       
         
     },
     {
@@ -59,7 +53,7 @@ User.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'users',
+        modelName: 'user',
     }
 )
 

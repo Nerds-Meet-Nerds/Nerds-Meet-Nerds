@@ -1,9 +1,9 @@
 // import models
 const User = require('./User');
-const Nerd_Type = require('./Nerd_Type');
-const UserDislikes = require('./UserDislikes');
-const UserLikes = require('./UserLikes');
 const Chatroom = require('./Chatroom');
+const Nerd_Type = require('./Nerd_Type');
+const User_Likes = require('./User_Likes');
+// const Userdislikes = require('./Userdislikes');
 
 
 
@@ -16,32 +16,37 @@ User.hasMany(Chatroom, {
     foreignKey: 'user_id',
     onDelete:"CASCADE"
   });
+  
+  User_Likes.belongsTo(User, {
+      foreignKey: 'user_id',
+      onDelete:"CASCADE"
+    });
+  
+  Nerd_Type.belongsTo(User, {
+      foreignKey: 'user_id',
+      onDelete:"CASCADE"
+    });
+  Chatroom.belongsTo(User, {
+      foreignKey: 'user_id',
+      onDelete:"CASCADE"
+      
+    });
 
-UserDislikes.hasOne(User, {
-    foreignKey: 'user_id',
-    onDelete:"CASCADE"
-  });
+// Currently not being used
 
-UserLikes.hasOne(User, {
-    foreignKey: 'user_id',
-    onDelete:"CASCADE"
-  });
-
-Nerd_Type.belongsTo(User, {
-    foreignKey: 'nerd_type',
-    onDelete:"CASCADE"
-  });
-Chatroom.belongsTo(User, {
-    foreignKey: 'user_id',
-    onDelete:"CASCADE"
-    
-  });
+// Userdislikes.hasOne(User, {
+//     foreignKey: 'user_id',
+//     onDelete:"CASCADE"
+//   });
 
 
-module.exports = {
-  User,
-  Nerd_Type,
-  Chatroom
+
+  module.exports = {
+    User,
+    Nerd_Type,
+    Chatroom,
+  // Userdislikes,
+  User_Likes
 };
 
 

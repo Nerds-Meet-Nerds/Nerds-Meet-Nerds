@@ -1,30 +1,38 @@
-const {Model, DataTypes} = require('sequelize');
-const sequelize = require('../config/connection');
+// Currently not being used
 
-class Disliked extends Model {};
+// const {Model, DataTypes} = require('sequelize');
+// const sequelize = require('../config/connection');
 
-Disliked.init(
-{
-    disliked_id: {
-            type: DataTypes.INTEGER,
-        },       
+// class Userdislikes extends Model {};
+
+// Userdislikes.init(
+// {
+//     id: {
+//         type: DataTypes.INTEGER,
+//         allowNull: false,
+//         primaryKey: true,
+//         autoIncrement: true
+//     },   
+//     disliked_id: {
+//             type: DataTypes.INTEGER,
+//         },       
     
-    user_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: 'user',
-            key: 'id'
-        }
-    },
-},
-    {
-        sequelize,
-        timestamps: false,
-        freezeTableName: true,
-        underscored: true,
-        modelName: 'disliked',
-    }
-)
+//     user_id: {
+//         type: DataTypes.INTEGER,
+//         allowNull: false,
+//         references: {
+//             model: 'user',
+//             key: 'id'
+//         }
+//     },
+// },
+//     {
+//         sequelize,
+//         timestamps: false,
+//         freezeTableName: true,
+//         underscored: true,
+//         modelName: 'userdislikes',
+//     }
+// )
 
-module.exports = Disliked;
+// module.exports = Userdislikes;

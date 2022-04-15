@@ -3,7 +3,6 @@ const sequelize = require('../config/connection');
 
 class Chatroom extends Model {};
 
-
 Chatroom.init(
     {
         id: {
@@ -11,12 +10,12 @@ Chatroom.init(
             allowNull: false,
             primaryKey: true,
             autoIncrement: true
-        },
+        },         
         chat_log: {
-            type: DataTypes.TEXT
+            type: DataTypes.STRING
         },
         last_message: {
-            type:DataTypes.TEXT 
+            type: DataTypes.STRING
         },
         user_id: {
             type: DataTypes.INTEGER,
@@ -25,9 +24,12 @@ Chatroom.init(
                 model: 'user',
                 key: 'id'
             }
-        },
+        } 
+    },
+   
+    {
         sequelize,
-        timestamps: true,
+        timestamps: false,
         freezeTableName: true,
         underscored: true,
         modelName: 'chatroom',

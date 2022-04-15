@@ -1,14 +1,21 @@
-const { Chatroom } = require('../models');
+const {Chatroom} = require('../models');
 
 const chatData = [
   {
-    chat_log: 'Vidal Not Tan',
-    last_message: 'potato2'
+    chat_log: 'Not Ugly',
+    last_message: 'Hi baby',
+    user_id:1
   },
   {
-    chat_log: 'Vidal Maybe Tan',
-    last_message: 'potato3'
+    chat_log: 'Ugly',
+    last_message: 'Hello',
+    user_id:3
   },
+  {
+    chat_log: 'Ugly',
+    last_message: 'Hello',
+    user_id:2
+  }
 
 ];
 
