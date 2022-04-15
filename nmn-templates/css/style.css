@@ -124,6 +124,37 @@
     width: 70%;
 }
 
+/* --------------------HOMEPAGE-------------------------------- */
+
+.sizing{
+    margin-left: 10rem;
+    margin-right: 10rem;
+    /* max-height: 80%; */
+}
+
+.caroHt{
+    max-height:500px;
+    width:500px;
+    height:auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.arrowColor{
+    background-color: black;
+}
+
+.top-space{
+    margin-top: 10px;
+}
+
+.yes-btn{
+    background-color: green;
+}
+.no-btn{
+    background-color: red;
+}
+
 /*----------------HIDDEN CONTAINERS-------------*/
 #login-prompt {
     /* border: 1px solid black; */
