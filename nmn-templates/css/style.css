@@ -447,3 +447,9 @@
             min-width: 20rem;
             min-height: 18rem;
         }
+
+/* ------------------DASH-------------------- */
+
+.cardBorder{
+    border: 3px solid black;
+}
