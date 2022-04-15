@@ -12,9 +12,16 @@ Nerd_Type.init(
             autoIncrement: true
         },         
         type: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING
+        },
+        user_id: {
+            type: DataTypes.INTEGER,
             allowNull: false,
-        }
+            references: {
+                model: 'user',
+                key: 'id'
+            }
+        } 
     },
    
     {

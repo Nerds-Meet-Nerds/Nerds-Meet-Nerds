@@ -31,33 +31,11 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false,
             validate:{
-                len:[8]
+                len:[4]
             }
         },
-        nerd_type_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'nerd_type',
-                key: 'id'
-            }
-        },
-        liked_ids: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'user',
-                key: 'id'
-            }
-        },
-        disliked_ids: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'user',
-                key: 'id'
-            }
-        }
+       
+        
     },
     {
         hooks: {
@@ -75,7 +53,7 @@ User.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'users',
+        modelName: 'user',
     }
 )
 

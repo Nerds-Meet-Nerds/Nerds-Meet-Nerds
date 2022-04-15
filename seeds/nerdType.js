@@ -1,8 +1,17 @@
-const {Nerd_Type } = require('../models');
+const { Nerd_Type } = require('../models');
 
 const nerdData = [
   {
-    type: ['Anime Nerd', 'Gamer Nerd', 'Book Nerd']
+    type: 'Anime Nerd',
+    user_id:1
+  },
+  {
+    type :'Gamer Nerd',
+    user_id:2
+  },
+  {
+    type :'Book Nerd',
+    user_id:3
   }
 ];
 
