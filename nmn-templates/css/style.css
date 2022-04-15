@@ -171,18 +171,10 @@
 
 /* --------------------HOMEPAGE-------------------------------- */
 
-.sizing{
-    margin-left: 10rem;
-    margin-right: 10rem;
-    /* max-height: 80%; */
-}
-
 .caroHt{
-    max-height:500px;
-    width:500px;
-    height:auto;
-    margin-left: auto;
-    margin-right: auto;
+    object-fit: cover;
+    width: 100%;
+    height: 400px;
 }
 
 .arrowColor{
@@ -447,3 +439,9 @@
             min-width: 20rem;
             min-height: 18rem;
         }
+
+/* ------------------DASH-------------------- */
+
+.cardBorder{
+    border: 3px solid black;
+}
