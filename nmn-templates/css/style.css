@@ -1,4 +1,4 @@
-/* Landing Page */
+/*-------------- Landing Page--------------- */
 
 /* #main-container {
     background-color: aquamarine;
@@ -110,6 +110,51 @@
                 #sign-up {
                     font-size: 37%;
                 }
+    /*hidden containers*/
+    #login-prompt {
+        /* border: 1px solid black; */
+        position:absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        top: 0;
+        left: 0;
+    }
+        #login-box {
+            background-color: white;
+            border: 1px solid black;
+            height: 30%;
+            width: 30%;
+            min-width: 20rem;
+            min-height: 18rem;
+        }
+            #login-pixel {
+                width: 50%;
+            }
+
+    #sign-up-prompt {
+        /* border: 1px solid black; */
+        position:absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        top: 0;
+        left: 0;
+    }
+        #sign-up-box {
+            background-color: white;
+            border: 1px solid black;
+            height: 40%;
+            width: 30%;
+            min-width: 20rem;
+            min-height: 25rem;
+        }
+            #sign-up-pixel {
+                width: 50%;
+            }
+
 
 /*----------------GENERIC ATTRIBUTES-------------*/
 .hide {
@@ -124,50 +169,28 @@
     width: 70%;
 }
 
-/*----------------HIDDEN CONTAINERS-------------*/
-#login-prompt {
-    /* border: 1px solid black; */
-    position:absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    top: 0;
-    left: 0;
-}
-    #login-box {
-        background-color: white;
-        border: 1px solid black;
-        height: 30%;
-        width: 30%;
-        min-width: 20rem;
-        min-height: 18rem;
-    }
-        #login-pixel {
-            width: 50%;
-        }
+/* --------------------HOMEPAGE-------------------------------- */
 
-#sign-up-prompt {
-    /* border: 1px solid black; */
-    position:absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    top: 0;
-    left: 0;
+.caroHt{
+    object-fit: cover;
+    width: 100%;
+    height: 400px;
 }
-    #sign-up-box {
-        background-color: white;
-        border: 1px solid black;
-        height: 40%;
-        width: 30%;
-        min-width: 20rem;
-        min-height: 25rem;
-    }
-        #sign-up-pixel {
-            width: 50%;
-        }
+
+.arrowColor{
+    background-color: black;
+}
+
+.top-space{
+    margin-top: 10px;
+}
+
+.yes-btn{
+    background-color: green;
+}
+.no-btn{
+    background-color: red;
+}
 
         /*----------------MEDIA QUERY-------------*/
         /* TODO: ADD MEDIA QUERY FOR HEIGHT */
@@ -265,30 +288,160 @@
 
 
 /* --------------HEADER---------------- */
-/* #navbar-main {
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
-} */
     #navbar-logo {
-        margin-right: 20rem;
+        margin-right: 45%;
     }
-    /* #navbar-ul {
-        
-    } */
-        /* #navbar-li {
-            margin-right: -10rem;
-        } */
-            /* #navbar-a{
-                padding: ;
-            } */
                 #navbar-item {
                     width: 75%;
-                    /* min-width: 5rem; */
+                    min-width: 4.2rem;
+                    min-height: 1rem;
+                    max-width: 10;
+                    max-height: 2.5rem;
                 }
 
 @media (max-width: 980px) {
     #navbar-logo {
         margin-right: 0;
     }
+}
+
+
+/* --------------------PROFILE ----------------*/
+#profile-container-main {
+    /* border: 1px solid black; */
+    height: 80vh;
+}
+    #profile-container-child {
+        /* border: 1px solid black; */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+        #pfp-container {
+            /* border: 1px solid black; */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2rem;
+        }
+            #pfp-img-container {
+                position: relative;
+                border: 1px solid black;
+                border-radius: 50%;
+                height: 20rem;
+                width: 20rem;
+                overflow: hidden;
+                
+            }
+                #pfp-img {
+                    position: absolute;
+                    width: 200%;
+                    height: auto;
+                    top: -1.2rem;
+                    left: -8.5rem;
+                }
+
+        #bio-container {
+            /* border: 1px solid red; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+            #bio-textbox {
+                border: 3px solid black;
+                height: 20rem;
+                margin-top: 2rem;
+                width: 60%;
+                overflow: scroll;
+                padding: 1rem;
+            }
+                #bio {
+                    width: 9%;
+                    margin-bottom: 1.5rem;
+                }
+
+        #footer-container {
+            /* border: 1px solid black; */
+            margin-top: 5rem;
+            margin-bottom: 5rem;
+        }
+            #footer-btn-container {
+                /* border: 1px solid black; */
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                align-items: center;
+            }
+                #preferences-btn {
+                    /* border: 1px solid black; */
+                    background-color: rgb(255, 236, 24);
+                    border-radius: 1.5rem;
+                    box-shadow: 2px 2px 4px rgb(43, 42, 42);
+                }
+                    #preferences {
+                        /* border: 1px solid black; */
+                        width: 50%;
+                    }
+                #images-btn {
+                    /* border: 1px solid black; */
+                    background-color: rgb(255, 236, 24);
+                    border-radius: 1.5rem;
+                    box-shadow: 2px 2px 4px rgb(43, 42, 42);
+                }
+                    #images {
+                        /* border: 1px solid black; */
+                        width: 50%;
+                    }
+                #edit-info-btn {
+                    /* border: 1px solid black; */
+                    background-color: rgb(255, 236, 24);
+                    border-radius: 1.5rem;
+                    box-shadow: 2px 2px 4px rgb(43, 42, 42);
+                }
+                    #edit-info {
+                        /* border: 1px solid black; */
+                        width: 50%;
+                    }
+    /* hidden containers */
+    #upload-img-container {
+        position:absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        top: 0;
+        left: 0;
+    }
+        #upload-img-box {
+            background-color: white;
+            border: 1px solid black;
+            height: 30%;
+            width: 30%;
+            min-width: 20rem;
+            min-height: 18rem;
+        }
+    #edit-info-container {
+        position:absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        top: 0;
+        left: 0;
+    }
+        #edit-info-box {
+            background-color: white;
+            border: 1px solid black;
+            height: 30%;
+            width: 30%;
+            min-width: 20rem;
+            min-height: 18rem;
+        }
+
+/* ------------------DASH-------------------- */
+
+.cardBorder{
+    border: 3px solid black;
 }
