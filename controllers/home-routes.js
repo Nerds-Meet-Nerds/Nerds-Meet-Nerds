@@ -1,31 +1,64 @@
 const router = require('express').Router();
-const { User, Chatroom, Nerd_Type, Liked, Disliked } = require('../models');
+const { Chatroom, User, Nerd_Type, Liked } = require('../models');
 const withAuth = require('../utils/auth');
 
 
-router.get('/', async (req, res) => {
-    try {
-        console.log(req.session);
-        const allPosts = await Post.findAll({ include: [{model: User, attributes: ['username'] }] });
-        const postsData = allPosts.map((post) => post.get({ plain: true }));
-        res.render('home', {req, postsData})
-    } catch (err) {
-        console.error(err)
-        res.status(404).send('Page not found')
-    }
-})
-
-router.get('/login', async (req, res) => {
-    try {
-        if (req.session.loggedIn) {
-            res.redirect('/')
-            return
+// get all chatlog from chatroom
+router.get("/", (req, res) => {
+    Chatroom.findAll({
+      include: [User],
+    })
+      .then((chatroomData) => {
+        const chatrooms = chatroomData.map((messages) => messages.get({ plain: true }));
+  
+        res.render("allChatLog", { messages });
+      })
+      .catch((err) => {
+        res.status(500).json(err);
+      });
+  });
+  
+  // get single post
+  router.get("/chatroom/:id", (req, res) => {
+    Chatroom.findByPk(req.params.id, {
+      include: [
+        User,
+        {
+          model: Nerd_Type,
+          include: [User],
+        },
+      ],
+    })
+      .then((chatroomData) => {
+        if (chatroomData) {
+          const post = chatroomData.get({ plain: true });
+  
+          res.render("single-post", { post });
         } else {
-            res.render('login')
+          res.status(404).end();
         }
-    } catch (err) {
-        res.status(500).json(err)
+      })
+      .catch((err) => {
+        res.status(500).json(err);
+      });
+  });
+  
+  router.get("/login", (req, res) => {
+    if (req.session.loggedIn) {
+      res.redirect("/");
+      return;
     }
-})
-
-module.exports = router;
+  
+    res.render("login");
+  });
+  
+  router.get("/signup", (req, res) => {
+    if (req.session.loggedIn) {
+      res.redirect("/");
+      return;
+    }
+  
+    res.render("signup");
+  });
+  
+  module.exports = router;

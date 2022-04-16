@@ -8,7 +8,6 @@
     "start": "node server.js",
     "watch": "nodemon server.js",
     "seed": "node seeds/index.js"
-
   },
   "keywords": [],
   "author": "",
@@ -22,7 +21,8 @@
     "express-session": "^1.17.2",
     "install": "^0.13.0",
     "mysql2": "^2.3.3",
-    "sequelize": "^6.19.0"
+    "sequelize": "^6.19.0",
+    "socket.io": "^4.4.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"

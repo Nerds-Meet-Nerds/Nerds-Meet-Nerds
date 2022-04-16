@@ -2,6 +2,7 @@
 const User = require('./User');
 const Nerd_Type = require('./Nerd_Type');
 const Chatroom = require('./Chatroom');
+const Liked = require('./Liked');
 
 
 User.hasMany(Nerd_Type, {
@@ -23,10 +24,16 @@ Chatroom.belongsTo(User, {
     onDelete:"CASCADE"
     
   });
+Liked.belongsTo(User, {
+    foreignKey: 'user_id',
+    onDelete:"CASCADE"
+    
+  });
 
 
 module.exports = {
   User,
   Nerd_Type,
-  Chatroom
+  Chatroom,
+  Liked
 };
