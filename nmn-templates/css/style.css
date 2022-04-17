@@ -310,6 +310,12 @@
     /* border: 1px solid black; */
     height: 80vh;
 }
+#profile-container-matched {
+    margin-bottom: 3rem;
+}
+.splash-3 {
+    background-color: rgb(242, 164, 249);
+}
     #profile-container-child {
         /* border: 1px solid black; */
         display: flex;
@@ -350,11 +356,17 @@
         }
             #bio-textbox {
                 border: 3px solid black;
+                background-color: white;
                 height: 20rem;
                 margin-top: 2rem;
-                width: 60%;
+                width: 80%;
                 overflow: scroll;
                 padding: 1rem;
+            }
+            @media (max-width: 980px) {
+                #bio-textbox {
+                    width: 95%;
+                }
             }
                 #bio-h2 {
                     font-size: 300%;
@@ -470,6 +482,7 @@
         width: 80%;
         background-color: grey;
         margin-top: 3rem;
+        margin-bottom: 5rem;
     }
         #chat-header {
             border: 1px solid black;
@@ -518,6 +531,8 @@
                     color: rgb(92, 92, 92)
                 }
 
+        
+
         #chat-footer {
             border: 1px solid black;
             width: 80%;
@@ -525,10 +540,25 @@
             padding: 0.5rem;
             border-radius: 0.5rem;
             margin-top: 1rem;
+            margin-bottom: 1rem;
         }
             #send-msg {
                 width: 80%;
             }
+@media (max-width: 700px) {
+        #chatroom-child {
+            width: 95%;
+        }
+            #chat-window {
+                width: 95%;
+            }
+                #chat-received {
+                    max-width: 80%;
+                }
+                #chat-sent {
+                    max-width: 80%;
+                }
+    }
 
 .splash2 {
     background: url('https://source.unsplash.com/twukN12EN7c/1920x1080') no-repeat center center fixed;
@@ -537,3 +567,6 @@
     background-size: cover;
     -o-background-size: cover;
     }
+
+    
+
