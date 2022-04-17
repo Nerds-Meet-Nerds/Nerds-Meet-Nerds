@@ -446,43 +446,79 @@
 
 /* ----------------CHATROOM-------------------- */
 #chatroom-container {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
 }
     #chatroom-child {
-        border: 1px solid black;
+        border: 3px solid black;
+        border-radius: 0.5rem;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         width: 80%;
+        background-color: grey;
+        margin-top: 3rem;
     }
         #chat-header {
             border: 1px solid black;
+            border-radius: 0.5rem;
             display: flex;
             flex-direction: row;
             align-items:center;
             justify-content:space-between;
+            background-color: rgb(202, 202, 202);
         }
-            #ch-title {
-                border: 1px solid black;
-            }
-            #ch-button {
-                border: 1px solid black;
-            }
+            /* #leave-room {
+                color: black;
+            } */
         #chat-window {
             border: 1px solid black;
+            border-radius: 0.5rem;
+            width: 80%;
+            background-color: rgba(240, 255, 255, 0.861);
+            display: flex;
+            flex-direction: column;
+            max-height: 60vh;
+            overflow-y: scroll;
+            align-items: flex-end;
+            margin-top: 1rem;
         }
             #chat-sent {
                 border: 1px solid black;
+                border-radius: 1.5rem;
+                width: fit-content;
+                padding: 0.5rem;
+                background-color: rgb(122, 173, 255);
+                margin: 1rem;
+                max-width: 47%;
             }
             #chat-received {
                 border: 1px solid black;
+                border-radius: 1.5rem;
+                width: fit-content;
+                padding: 0.5rem;
+                background-color: white;
+                margin: 1rem;
+                align-self: flex-start;
+                max-width: 47%;
             }
+                #who-and-time {
+                    color: rgb(92, 92, 92)
+                }
 
         #chat-footer {
             border: 1px solid black;
+            width: 80%;
+            background-color: rgb(202, 202, 202);
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
         }
+            #send-msg {
+                width: 80%;
+            }
