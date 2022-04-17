@@ -35,17 +35,24 @@
                 font-size: 250%;
                 border-radius: 1.5rem;
                 box-shadow: 2px 2px 4px rgb(43, 42, 42);
-                background-color: rgb(255, 236, 24);
-                width: 60%;
+                background-color: rgb(207, 204, 204);
+                /* width: 40%; */
                 min-width: 12rem;
+                margin-right: 8%;
+                padding: 1%;
+                /* padding-left: 3%;
+                padding-right: 3%; */
             }
 
                 #load-player {
-                    width: 80%;
+                    font-weight: 700;
+                    font-size: 80%;
+                    line-height: 80%;
                 }
 
                 #login {
-                    font-size: 37%;
+                    font-size: 30%;
+                    margin-top: -0.5rem;
                 }
 
     #middle {
@@ -77,8 +84,9 @@
         }
 
             #level-up-your-game {
-                width:50%;
-                min-width: 15rem;
+                width:75%;
+                min-width: 22rem;
+                max-width: 55rem;
             }
 
         #new-player-container {
@@ -88,7 +96,7 @@
             max-height: 5rem;
             height: 5rem;
             width: fit-content;
-            margin-top: 1rem;
+            margin-top: 5%;
         }
 
             #new-player-btn {
@@ -96,20 +104,24 @@
                 font-size: 250%;
                 border-radius: 1.5rem;
                 box-shadow: 2px 2px 4px rgb(43, 42, 42);
-                background-color: rgb(255, 236, 24);
+                background-color: rgb(207, 204, 204);
                 margin-top: 1.5rem;
                 margin-right: 1.5rem;
-                width: 50%;
+                width: 100%;
                 min-width: 12rem;
             }
 
                 #new-player {
-                    width: 80%;
+                    font-weight: 700;
+                    font-size: 100%;
+                    line-height: 80%;
                 }
 
                 #sign-up {
-                    font-size: 37%;
+                    font-size: 30%;
+                    margin-top: -0.5rem;
                 }
+
     /*hidden containers*/
     #login-prompt {
         /* border: 1px solid black; */
@@ -288,23 +300,10 @@
 
 
 /* --------------HEADER---------------- */
-    #navbar-logo {
-        margin-right: 45%;
-    }
-                #navbar-item {
-                    width: 75%;
-                    min-width: 4.2rem;
-                    min-height: 1rem;
-                    max-width: 10;
-                    max-height: 2.5rem;
-                }
-
-@media (max-width: 980px) {
-    #navbar-logo {
-        margin-right: 0;
-    }
-}
-
+        #navbar-item {
+            color: black;
+            font-size: 150%;
+        }
 
 /* --------------------PROFILE ----------------*/
 #profile-container-main {
@@ -357,9 +356,9 @@
                 overflow: scroll;
                 padding: 1rem;
             }
-                #bio {
-                    width: 9%;
-                    margin-bottom: 1.5rem;
+                #bio-h2 {
+                    font-size: 300%;
+                    font-weight: 700;
                 }
 
         #footer-container {
@@ -376,33 +375,32 @@
             }
                 #preferences-btn {
                     /* border: 1px solid black; */
-                    background-color: rgb(255, 236, 24);
+                    background-color: rgb(207, 204, 204);
                     border-radius: 1.5rem;
                     box-shadow: 2px 2px 4px rgb(43, 42, 42);
                 }
-                    #preferences {
-                        /* border: 1px solid black; */
-                        width: 50%;
-                    }
                 #images-btn {
                     /* border: 1px solid black; */
-                    background-color: rgb(255, 236, 24);
+                    background-color: rgb(207, 204, 204);
                     border-radius: 1.5rem;
                     box-shadow: 2px 2px 4px rgb(43, 42, 42);
                 }
-                    #images {
-                        /* border: 1px solid black; */
-                        width: 50%;
-                    }
                 #edit-info-btn {
                     /* border: 1px solid black; */
-                    background-color: rgb(255, 236, 24);
+                    background-color: rgb(207, 204, 204);
                     border-radius: 1.5rem;
                     box-shadow: 2px 2px 4px rgb(43, 42, 42);
                 }
-                    #edit-info {
-                        /* border: 1px solid black; */
-                        width: 50%;
+                    #footer-btn {
+                        font-size: 175%;
+                        font-weight: 700;
+                        white-space: nowrap;
+                    }
+                    @media (max-width: 550px) {
+                        #footer-btn {
+                            font-size: 120%;
+                            font-weight: 700;
+                        }
                     }
     /* hidden containers */
     #upload-img-container {
@@ -453,3 +451,45 @@
     background-size: cover;
     -o-background-size: cover;
 }
+/* ----------------CHATROOM-------------------- */
+#chatroom-container {
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+    #chatroom-child {
+        border: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 80%;
+    }
+        #chat-header {
+            border: 1px solid black;
+            display: flex;
+            flex-direction: row;
+            align-items:center;
+            justify-content:space-between;
+        }
+            #ch-title {
+                border: 1px solid black;
+            }
+            #ch-button {
+                border: 1px solid black;
+            }
+        #chat-window {
+            border: 1px solid black;
+        }
+            #chat-sent {
+                border: 1px solid black;
+            }
+            #chat-received {
+                border: 1px solid black;
+            }
+
+        #chat-footer {
+            border: 1px solid black;
+        }
