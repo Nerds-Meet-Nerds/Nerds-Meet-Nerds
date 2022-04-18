@@ -1,3 +1,5 @@
+
+
 // import models
 const User = require('./User');
 const Chatroom = require('./Chatroom');
@@ -8,10 +10,11 @@ const Pictures = require('./Pictures')
 
 
 
-User.hasMany(Nerd_Type, {
-    foreignKey: 'user_id',
-    onDelete:"CASCADE"
-  });
+
+// User.hasMany(Nerd_Type, {
+//     foreignKey: 'user_id',
+//     onDelete:"CASCADE"
+//   });
   
 User.hasMany(Chatroom, {
     foreignKey: 'user_id',
@@ -41,7 +44,16 @@ User.hasMany(Pictures, {
       
     });
 
+
 // Currently not being used
+
+
+// module.exports = {
+//   User,
+//   Nerd_Type,
+//   Chatroom,
+//   Liked
+// };
 
 // Userdislikes.hasOne(User, {
 //     foreignKey: 'user_id',
@@ -69,3 +81,4 @@ userDislikesOtherUser
   to find all the users someone dislikes
   userDisliikesOtherUser.findAll({where: {user_id: this.user}}) => a list of all the disliked user ids which u can use the include and attributes to populate with other data from their user table
 */
+

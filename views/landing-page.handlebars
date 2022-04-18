@@ -1,0 +1,79 @@
+<body class="splash">
+
+    <div id="main-container" class="container">
+        <div id="top" class="row">
+            <div id="logo-container" class="col-6">
+                <img id="logo" src="../../assets/images/NMN.png" alt="Nerds Meet Nerds">
+            </div>            
+            <div id="load-player-container" class="col-6">
+                <button id="load-player-btn">
+                    <p id="load-player">Load Player</p>
+                    <p id="login">Login</p>
+                </button>
+            </div>
+        </div>
+        <div id="middle" class="row">
+            <div id="space"></div>
+            <div id="level-up" class="col">
+                <img id="level-up-your-game" src="../../assets/images/krita/levelup-break-yourgame(...).png" alt="level up your game" />
+                <br>
+            </div>
+            <div id="new-player-container" class="col-12">
+                <button id="new-player-btn">
+                    <p id="new-player">New Player</p>
+                    <!-- <img id="new-player" src="../../assets/images/krita/newplayer-pixel.png" alt="New Player" /> -->
+                    <p id="sign-up">Sign up</p>
+                </button> 
+            </div>
+        </div>
+    </div>
+    <div id="login-prompt" class="container d-none">
+        <div id="login-box" class="row">
+            <form class="col">
+                <h1><img id="login-pixel" src="../../assets/images/krita/login-pixel.png"></h1>
+                <p>username/email</p>
+                <input id="input" type="text" placeholder="username/email">
+                <p>password</p>
+                <input id="input" type="password" placeholder="password">
+                <br>
+                <br>
+                <button>Submit</button>
+                <br>
+                <br>
+                <a href="./landing-page.html">Back</a>
+            </form>
+        </div>
+    </div>
+    <div id="sign-up-prompt" class="container d-none">
+        <div id="sign-up-box" class="row">
+            <form class="col">
+                <h1><img id="sign-up-pixel" src="../../assets/images/krita/signup-pixel.png"></h1>
+                <p>username</p>
+                <input id="input" type="text" placeholder="username">
+                <p>email</p>
+                <input id="input" type="text" placeholder="email">
+                <p>password</p>
+                <input id="input" type="password" placeholder="password">
+                <p>confirm password</p>
+                <input id="input" type="password" placeholder="confirm password">
+                <br>
+                <br>
+                <button>Submit</button>
+                <br>
+                <br>
+                <a href="./landing-page.html">Back</a>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+    <!-- bootstrap js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <!-- my scripts -->
+    <script src="./landing-page.js"></script>
+</body>

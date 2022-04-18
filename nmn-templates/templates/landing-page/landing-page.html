@@ -8,16 +8,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/style.css" />
 </head>
-<body>
+<body class="splash">
 
-    <div id="main-container" class="container-fluid">
+    <div id="main-container" class="container">
         <div id="top" class="row">
             <div id="logo-container" class="col-6">
                 <img id="logo" src="../../assets/images/NMN.png" alt="Nerds Meet Nerds">
             </div>            
             <div id="load-player-container" class="col-6">
                 <button id="load-player-btn">
-                    <img id="load-player" src="../../assets/images/krita/loadplayer-pixel.png" alt="Load Player" />
+                    <p id="load-player">Load Player</p>
                     <p id="login">Login</p>
                 </button>
             </div>
@@ -28,15 +28,16 @@
                 <img id="level-up-your-game" src="../../assets/images/krita/levelup-break-yourgame(...).png" alt="level up your game" />
                 <br>
             </div>
-            <div id="new-player-container" class="col">
+            <div id="new-player-container" class="col-12">
                 <button id="new-player-btn">
-                    <img id="new-player" src="../../assets/images/krita/newplayer-pixel.png" alt="New Player" />
+                    <p id="new-player">New Player</p>
+                    <!-- <img id="new-player" src="../../assets/images/krita/newplayer-pixel.png" alt="New Player" /> -->
                     <p id="sign-up">Sign up</p>
                 </button> 
             </div>
         </div>
     </div>
-    <div id="login-prompt" class="container-fluid d-none">
+    <div id="login-prompt" class="container d-none">
         <div id="login-box" class="row">
             <form class="col">
                 <h1><img id="login-pixel" src="../../assets/images/krita/login-pixel.png"></h1>
@@ -46,11 +47,14 @@
                 <input id="input" type="password" placeholder="password">
                 <br>
                 <br>
+                <button>Submit</button>
+                <br>
+                <br>
                 <a href="./landing-page.html">Back</a>
             </form>
         </div>
     </div>
-    <div id="sign-up-prompt" class="container-fluid d-none">
+    <div id="sign-up-prompt" class="container d-none">
         <div id="sign-up-box" class="row">
             <form class="col">
                 <h1><img id="sign-up-pixel" src="../../assets/images/krita/signup-pixel.png"></h1>
@@ -62,6 +66,9 @@
                 <input id="input" type="password" placeholder="password">
                 <p>confirm password</p>
                 <input id="input" type="password" placeholder="confirm password">
+                <br>
+                <br>
+                <button>Submit</button>
                 <br>
                 <br>
                 <a href="./landing-page.html">Back</a>
