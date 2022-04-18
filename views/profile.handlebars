@@ -5,7 +5,7 @@
     <div id="profile-container-main" class="container-fluid">
         <div id="profile-container-child" class="row">
             <div id="pfp-container" class="col">
-                <h2>Hi! I'm Jinx</h2>
+                <h2>Hi! I'm {{plainUser.username}}</h2>
                 <div id="pfp-img-container">
                     <img id="pfp-img" src="../../assets/images/jinx-profile-pic.jpg">
                 </div>
@@ -13,9 +13,9 @@
             <div id="bio-container" class="col">
                 <div id="bio-textbox">
                     <h2 id="bio-h2">Bio</h2>
-                    <p id="bio-text" class="d-flex">A manic and impulsive criminal from Zaun, Jinx lives to wreak havoc without care for the consequences. With an arsenal of deadly weapons, she unleashes the loudest blasts and brightest explosions to leave a trail of mayhem and panic in her wake. Jinx despises boredom, and gleefully brings her own chaotic brand of pandemonium wherever she goes.</p>
+                    <p id="bio-text" class="d-flex">{{plainUser.bio}}</p>
                     <form id="submit-bio-form" class="d-none">
-                        <textarea id="submit-bio-textarea">A manic and impulsive criminal from Zaun, Jinx lives to wreak havoc without care for the consequences. With an arsenal of deadly weapons, she unleashes the loudest blasts and brightest explosions to leave a trail of mayhem and panic in her wake. Jinx despises boredom, and gleefully brings her own chaotic brand of pandemonium wherever she goes.</textarea>
+                        <textarea id="submit-bio-textarea">{{plainUser.bio}}</textarea>
                         <button id="submit-bio">Submit</button>
                     </form>
                 </div>
@@ -45,6 +45,9 @@
                     <input id="input" type="file" accept="image/*">
                     <p>upload homepage pictures</p>
                     <input id="input" type="file" accept="image/*">
+                    <br>
+                    <br>
+                    <button>Submit</button>
                     <br>
                     <br>
                     <a href="/profile">Back</a>

@@ -95,6 +95,16 @@ router.post('/logout', (req, res) => {
   //   }
   // })
   
+  router.put('/editBio', async (req,res) => {
+    try {
+      const updatedBio = await User.update(
+        { bio: req.body.bio},
+        { where: { id: req.body.user_id}})
+        res.status(200).json(updatedBio)
+    } catch (err){
+      res.status(500).json(err)
+    }
+  })
 
 
 module.exports = router;

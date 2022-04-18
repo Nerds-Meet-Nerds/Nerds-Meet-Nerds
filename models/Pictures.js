@@ -13,8 +13,13 @@ Pictures.init(
     },
 
     pic: {
-        type: DataTypes.BLOB("long"),
-      },   
+        type: DataTypes.STRING,
+        defaultValue: '/assets/images/default.png'
+    },   
+
+    // pic_primary: {
+    //     type: DataTypes.BOOLEAN,
+    // },   
     
     user_id: {
         type: DataTypes.INTEGER,
