@@ -19,9 +19,11 @@ router.get("/homepage", withAuth, (req, res) => {
   }
 });
 
-router.get('/profile', withAuth, (req, res) => {
+router.get('/profile', withAuth, async (req, res) => {
   try {
-    res.render('profile')
+    const currentUser = await User.findByPk(req.session.user_id)
+    const plainUser = currentUser.get({plain: true})
+    res.render('profile', {plainUser})
   } catch (err) {
     res.status(500).json(err);
   }
