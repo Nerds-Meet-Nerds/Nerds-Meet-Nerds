@@ -48,12 +48,12 @@ imagesBtn.addEventListener('click', displayImageUpload);
 editInfoBtn.addEventListener('click', editBio);
 submitBioForm.addEventListener('submit', updateBio);
 
-const getImage = async () => {
-    const pfpImg = document.getElementById('pfp-img');
-    const image = await fetch('/api/pictures/getImage/1');
-    const parsedImg = await image.json();
-    // console.log(image);
-    pfpImg.src = parsedImg;
-}
+// const getImage = async () => {
+//     const pfpImg = document.getElementById('pfp-img');
+//     const image = await fetch('/api/pictures/getImage/1');
+//     const parsedImg = await image.json();
+//     // console.log(image);
+//     pfpImg.src = parsedImg;
+// }
 
-getImage();
+// getImage();

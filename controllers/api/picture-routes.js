@@ -11,12 +11,12 @@ router.get('/getImage/:id', async (req,res) => {
     }
 })
 
-router.put('/editImage', async (req,res) => {
+router.post('/uploadImage', async (req,res) => {
     try {
-      const updatedImg = await Pictures.update(
+      const uploadedImg = await Pictures.create(
         { pic: req.body.pic},
         { where: { id: req.body.user_id}})
-        res.status(200).json(updatedImg);
+        res.status(200).json(uploadedImg);
     } catch (err) {
         res.status(500).json(err);
     }

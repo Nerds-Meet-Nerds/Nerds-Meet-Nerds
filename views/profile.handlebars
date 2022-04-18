@@ -7,7 +7,7 @@
             <div id="pfp-container" class="col">
                 <h2>Hi! I'm {{plainUser.username}}</h2>
                 <div id="pfp-img-container">
-                    <img id="pfp-img" src="../../assets/images/jinx-profile-pic.jpg">
+                    <img id="pfp-img" src='{{pic}}'>
                 </div>
             </div>
             <div id="bio-container" class="col">
@@ -41,10 +41,8 @@
                     <h2>Update Images</h2>
                     <br>
                     <br>
-                    <p>upload profile picture</p>
-                    <input id="input" type="file" accept="image/*">
-                    <p>upload homepage pictures</p>
-                    <input id="input" type="file" accept="image/*">
+                    <p>upload image URL</p>
+                    <input id="input" type="text" placeholder="Enter image URL">
                     <br>
                     <br>
                     <button>Submit</button>
