@@ -53,10 +53,6 @@ User_Likes.belongsTo(User, {
     onDelete:"CASCADE"
   });
 
-Nerd_Type.belongsTo(User, {
-    foreignKey: 'user_id',
-    onDelete:"CASCADE"
-  });
 Chatroom.belongsTo(User, {
     foreignKey: 'user_id',
     onDelete:"CASCADE"

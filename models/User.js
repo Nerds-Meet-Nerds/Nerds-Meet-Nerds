@@ -40,9 +40,6 @@ User.init(
             defaultValue: "Talk a little bit about yourself..."
         },
 
-        interest: {
-            type: DataTypes.TEXT
-        }
        
         
     },
