@@ -1,10 +1,10 @@
-const { Pictures } = require('../models');
+// const { Pictures } = require('../models');
 
-const picData = [
-  {
-  }
-];
+// const picData = [
+//   {
+//   }
+// ];
 
-const seedPicture = () => Pictures.bulkCreate(picData);
+// const seedPicture = () => Pictures.bulkCreate(picData);
 
-module.exports = seedPicture;
+// module.exports = seedPicture;

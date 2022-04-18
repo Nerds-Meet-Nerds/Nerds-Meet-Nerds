@@ -2,7 +2,7 @@
 const seedUser = require('./user');
 const seedChat =  require('./chatroom')
 const seedLike =  require('./likes')
-const seedPicture =  require('./picture')
+// const seedPicture =  require('./picture')
 const sequelize = require('../config/connection');
 
 
@@ -19,8 +19,8 @@ const seedAll = async () => {
   await seedLike();
   console.log('\n----- LIKE USER SEEDED -----\n');
   
-  await seedPicture();
-  console.log('\n----- PICTURE SEEDED -----\n');
+  // await seedPicture();
+  // console.log('\n----- PICTURE SEEDED -----\n');
   
   process.exit(0);
 };
