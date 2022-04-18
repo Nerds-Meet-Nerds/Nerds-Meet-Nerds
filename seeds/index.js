@@ -1,6 +1,6 @@
 
 const seedUser = require('./user');
-const seedChat =  require('./chatroom')
+const seedChat =  require('./chatRoom')
 const seedLike =  require('./likes')
 const seedPicture =  require('./picture')
 const sequelize = require('../config/connection');
