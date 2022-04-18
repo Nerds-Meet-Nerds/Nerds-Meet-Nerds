@@ -15,7 +15,8 @@ Pictures.init(
     pic: {
         type: DataTypes.STRING,
         defaultValue: '/assets/images/default.png'
-    },   
+    },  
+     
 
     // pic_primary: {
     //     type: DataTypes.BOOLEAN,
