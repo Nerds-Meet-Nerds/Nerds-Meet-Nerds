@@ -1,29 +1,23 @@
 const router = require('express').Router();
+const withAuth = require('../../utils/auth')
 const { Chatroom, User_Likes, User } = require('../../models');
 
 
-router.get("/", withAuth, (req, res) => {
-  Chatroom.findAll({
-    where: {
-      userId: req.session.userId
-    }
-  })
-    .then(chatroomData => {
-      const chats = chatroomData.map((chat) => chat.get({ plain: true }));
-      
-      res.render("all-chats", {
-        layout: "chatroom",
-        chats
-      });
-    })
-    .catch(err => {
-      console.log(err);
-      res.redirect("login");
-    });
-});
+router.get("/", withAuth, async (req, res) => {
+  try {
+    const allChatrooms = await Chatroom.findAll({ where: { userId: req.session.userId }})
+    const chatroomsData = allChatrooms.map((chat) => chat.get({ plain: true }));
 
-router.get("/:id", (req, res) => {
-    Chatroom.findByPk(req.params.id, {
+    res.render("all-chats", { ...chatroomsData });
+  } catch (err) {
+    console.log(err);
+    res.redirect("login");
+  }
+})
+
+router.get("/:id", async (req, res) => {
+  try {
+    const fChatroom = await Chatroom.findByPk(req.params.id, {
       include: [
         User,
         {
@@ -32,19 +26,16 @@ router.get("/:id", (req, res) => {
         },
       ],
     })
-      .then((chatroomData) => {
-        if (chatroomData) {
-          const chat = chatroomData.get({ plain: true });
-  
-          res.render("single-chat", { chat });
-        } else {
-          res.status(404).end();
-        }
-      })
-      .catch((err) => {
-        res.status(500).json(err);
-      });
-  });
+    if (fChatroom) {
+      const chatroomData = fChatroom.get({ plain: true });
+      res.render("single-chat", { ...chatroomData });
+    } else {
+      res.status(404).end();
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
 
 router.post('/new-chat', async (req, res) => {
     const {chat_log} = req.body;
