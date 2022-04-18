@@ -136,7 +136,7 @@ body {
     /* height: 100vh; */
     top: 0;
     left: 0;
-    transform: translate(50%, 50%);
+    margin-top: 23rem;
 }
     #login-box {
         background-color: white;
@@ -145,6 +145,7 @@ body {
         width: 30%; */
         min-width: 20rem;
         min-height: 18rem;
+
     }
         #login-pixel {
             width: 50%;
@@ -159,7 +160,7 @@ body {
     /* height: 100vh; */
     top: 0;
     left: 0;
-    transform: translate(50%, 50%);
+    margin-top: 16rem;
 }
     #sign-up-box {
         background-color: white;
@@ -237,18 +238,26 @@ background-color: red;
 }
 
 @media (max-width: 930px) { 
-#new-player-btn {
+/* #new-player-btn {
     margin-top: -0.1rem;
-}
+} */
 
 #space {
     height: 10rem;
+}
+
+#login-prompt {
+    margin-top: 10rem;
+}
+#sign-up-prompt {
+    margin-top: 10rem;
+    margin-left: 1rem;
 }
 }
 
 @media (max-width: 630px) { 
 #new-player-btn {
-    margin-top: -3rem;
+    margin-top: 8rem;
 }
 
 #space {
@@ -269,9 +278,9 @@ background-color: red;
     min-width: 10rem;
 }
 
-#new-player-btn {
+/* #new-player-btn {
     margin-top: -10rem;
-}
+} */
 
 #space {
     height: 3rem;
@@ -284,12 +293,18 @@ background-color: red;
 #sign-up {
     font-size: 23%;
 }
+#login-prompt {
+    margin-top: 7rem;
+}
+#sign-up-prompt {
+    margin-top: 7rem;
+}
 }
 
 @media (max-width: 379px) { 
-#new-player-btn {
+/* #new-player-btn {
     margin-top: -17rem;
-}
+} */
 
 #space {
     height: 0.1rem;
@@ -366,9 +381,10 @@ background-color: rgb(242, 164, 249);
             height: 20rem;
             margin-top: 2rem;
             width: 80%;
-            overflow: scroll;
+            overflow-y: scroll;
             padding: 1rem;
         }
+            
         @media (max-width: 980px) {
             #bio-textbox {
                 width: 95%;
@@ -426,7 +442,7 @@ background-color: rgb(242, 164, 249);
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    /* height: 100vh; */
     top: 0;
     left: 0;
 }
@@ -437,6 +453,7 @@ background-color: rgb(242, 164, 249);
         width: 30%;
         min-width: 20rem;
         min-height: 18rem;
+        margin-top: 40rem;
     }
 #edit-info-container {
     position:absolute;
@@ -454,6 +471,20 @@ background-color: rgb(242, 164, 249);
         width: 30%;
         min-width: 20rem;
         min-height: 18rem;
+    }
+#submit-bio-form{
+    display: flex;
+    flex-direction: column;
+
+}
+    #submit-bio-textarea {
+        width: 95%;
+        height: 15rem;
+    }
+    #submit-bio {
+        width: fit-content;
+        align-self: flex-end;
+        margin-right: 5%;
     }
 
 /* ------------------DASH-------------------- */
