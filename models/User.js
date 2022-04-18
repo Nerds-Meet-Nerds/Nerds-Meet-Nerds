@@ -39,6 +39,8 @@ User.init(
             type: DataTypes.TEXT,
             defaultValue: "Talk a little bit about yourself..."
         },
+
+       
         
     },
     {
