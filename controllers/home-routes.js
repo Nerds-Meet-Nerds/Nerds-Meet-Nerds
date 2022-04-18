@@ -26,10 +26,22 @@ router.get('/profile', withAuth, (req, res) => {
   }
 })
 
-router.get('/dashboard', withAuth, (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
   try {
-    res.render('dashboard')
+    const chatrooms = await Chatroom.findAll( { where: { user_id1: req.session.user_id } } )
+    const chatroomsData = chatrooms.map(chatroom => chatroom.get({ plain: true }))
+    var matches = [];
+
+    for (chat of chatroomsData) {
+      const otheruser = await User.findByPk(chat.user_id2)
+      chat.othername = otheruser.username
+      matches.push(chat)
+    }
+
+    console.log(matches);
+    res.render('dashboard', {matches})
   } catch (err) {
+    console.error(err);
     res.status(500).json(err);
   }
 })
