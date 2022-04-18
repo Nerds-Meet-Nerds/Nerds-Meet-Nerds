@@ -1,14 +1,14 @@
 <body class="splash">
     {{>navbar}}
 
-    {{#each matches as |chat|}}
+    {{#each chatroomData as |chat|}}
     <div class="container">
         <div class="card mx-auto mb-3 mt-3 cardBorder" style="width: 18rem;">
             <img class="card-img-top" src="assets/images/jinx-profile-pic.jpg" alt="Card image cap"> {{!-- Will need to add a way to get diff image dynamically --}}
             <div class="card-body">
             <h5 class="card-title">{{chat.othername}}</h5>
             <p class="card-text">{{chat.last_message}}</p>
-            <a href="#" class="btn btn-primary">Message</a>
+            <a id="{{chat.id}}" href="#" class="btn btn-primary chatroom-open">Message</a>
             </div>
         </div>
     </div>

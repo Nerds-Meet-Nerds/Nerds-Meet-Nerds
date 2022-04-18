@@ -18,6 +18,12 @@ const chatData = [
     last_message: 'Hello',
     user_id1:1,
     user_id2:3
+  },
+  {
+    chat_log: 'Ugly',
+    last_message: 'Hello',
+    user_id1:3,
+    user_id2:1
   }
 
 ];
