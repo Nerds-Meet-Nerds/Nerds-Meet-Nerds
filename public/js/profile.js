@@ -12,18 +12,30 @@ const displayImageUpload = () => {
     } 
 }
 
-const displayEditInfo = () => {
-    const editInfoContainer = document.getElementById('edit-info-container')
-    if (editInfoContainer.classList.contains('d-none')) {
-        editInfoContainer.classList.remove('d-none')
-        editInfoContainer.classList.add('d-flex');
+const toTextArea = () => {
+    const bioText = document.getElementById('bio-text');
+    const submitBioForm = document.getElementById('submit-bio-form');
+    if (bioText.classList.contains('d-flex')){
+        bioText.classList.remove('d-flex');
+        bioText.classList.add('d-none');
     } else {
-        editInfoContainer.classList.remove('d-flex');
-        editInfoContainer.classList.add('d-none');
-    } 
+        bioText.classList.remove('d-none');
+        bioText.classList.add('d-flex');
+    }
+
+    if (submitBioForm.classList.contains('d-none')) {
+        submitBioForm.classList.remove('d-none');
+        submitBioForm.classList.add('d-flex');
+    } else {
+        submitBioForm.classList.remove('d-flex');
+        submitBioForm.classList.add('d-none');
+    }
+}
+
+const editBio = () => {
+    toTextArea();
 }
 
 
-
 imagesBtn.addEventListener('click', displayImageUpload);
-editInfoBtn.addEventListener('click', displayEditInfo);
+editInfoBtn.addEventListener('click', editBio);
