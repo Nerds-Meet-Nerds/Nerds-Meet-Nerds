@@ -28,7 +28,6 @@ const seedAll = async () => {
   console.log('\n----- Picture SEEDED -----\n');
   
   // Currently not being used
-
    // await seedDislike();
    // console.log('\n----- CHAT SEEDED -----\n');
 

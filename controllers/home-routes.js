@@ -1,64 +1,75 @@
 const router = require('express').Router();
-const { Chatroom, User, Nerd_Type, Liked } = require('../models');
-const withAuth = require('../utils/auth');
+const withAuth = require('../utils/auth')
+const structureChat = require('../utils/structureChat')
+const { Chatroom, User, User_Likes } = require('../models');
 
+router.get('/', (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/homepage')
+  } else {
+    res.render('landing-page')
+  }
+})
 
-// get all chatlog from chatroom
-router.get("/", (req, res) => {
-    Chatroom.findAll({
-      include: [User],
-    })
-      .then((chatroomData) => {
-        const chatrooms = chatroomData.map((messages) => messages.get({ plain: true }));
-  
-        res.render("allChatLog", { messages });
-      })
-      .catch((err) => {
-        res.status(500).json(err);
-      });
-  });
-  
-  // get single post
-  router.get("/chatroom/:id", (req, res) => {
-    Chatroom.findByPk(req.params.id, {
-      include: [
-        User,
-        {
-          model: Nerd_Type,
-          include: [User],
-        },
-      ],
-    })
-      .then((chatroomData) => {
-        if (chatroomData) {
-          const post = chatroomData.get({ plain: true });
-  
-          res.render("single-post", { post });
-        } else {
-          res.status(404).end();
-        }
-      })
-      .catch((err) => {
-        res.status(500).json(err);
-      });
-  });
-  
-  router.get("/login", (req, res) => {
+router.get("/homepage", withAuth, (req, res) => {
+  try {
+      res.render('homepage')
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/profile', withAuth, (req, res) => {
+  try {
+    res.render('profile')
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
+
+router.get('/dashboard', withAuth, async (req, res) => {
+  try {
+    const chatroomData = await structureChat(req)
+
+    res.render('dashboard', {chatroomData})
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+})
+
+router.get('/chatroom', withAuth, (req, res) => {
+  try {
+    res.render('chatroom')
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+})
+// router.get('/chatroom/:id')
+
+router.get("/login", (req, res) => {
+  try {
     if (req.session.loggedIn) {
-      res.redirect("/");
-      return;
+      res.redirect('/homepage')
+    } else {
+      res.render('/landing-page')
     }
-  
-    res.render("login");
-  });
-  
-  router.get("/signup", (req, res) => {
+  } catch (err) {
+    res.status(500).json(err)
+  }
+})
+
+router.get("/signup", (req, res) => {
+  try {
     if (req.session.loggedIn) {
-      res.redirect("/");
-      return;
-    }
-  
-    res.render("signup");
-  });
-  
-  module.exports = router;
+      res.redirect('/profile')
+    } else {
+      res.render('/landing-page')
+      }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
+
+module.exports = router;

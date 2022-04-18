@@ -1,33 +1,58 @@
 const router = require('express').Router();
-const { User, Chatroom, Liked } = require('../../models');
+const { User, Chatroom, User_Likes } = require('../../models');
+// const withAuth = require("../utils/auth");
 
-router.get('/', async (req, res) => {
+router.get('/homepage', async (req, res) => {
   try {
-      const allLiked = await Liked.findAll({ include: 
+      const allMatchedUsers = await User_Likes.findAll({ include: 
         [
             {model: User, attributes: ['username'] }, 
-            {model: Liked, include: [{model: User, attributes: ['username']}]}
+            {model: User_Likes, include: [{model: User, attributes: ['username']}]}
         ]});
-      res.status(200).json(allLiked);
+      res.status(200).json(allMatchedUsers);
   } catch (err) {
       res.status(500).json(err)
   }
 })
 
-router.get('/:id', async (req, res) => {
+router.get('/homepage/:id', async (req, res) => {
   try {
-      const likedUser = await Liked.findByPk(req.params.id, { include: 
+      const matchedUser = await User_Likes.findByPk(req.params.id, { include: 
         [
             {model: User, attributes: ['username'] }, 
-            {model: Liked, include: [{model: User, attributes: ['username']}]}
+            {model: User_Likes, include: [{model: User, attributes: ['username']}]}
         ]});
-      res.status(200).json(likedUser);
-  } catch (err) {
-      res.status(500).json(err)
-  }
+        const likedUser = await User.create({
+          username: req.body.username,
+          password: req.body.password,
+        });
+    
+        req.session.save(() => {
+          req.session.user_id = userData.id;
+          req.session.username = userData.username;
+          req.session.loggedIn = true;
+          
+          res.status(200).json(matchedUser);
+        });
+      } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+      }
 })
 
-router.post('/like', async (req, res) => {
+router.get("/dashboard", (req, res) => {
+  res.render("homepage/dashboard", {
+    layout: "dashboard"
+  });
+});
+
+router.get("/chatroom", (req, res) => {
+  res.render("liked-user", {
+    layout: "chatroom"
+  });
+});
+
+router.post('/chatroom/new', async (req, res) => {
   try {
     const {userid} = req.session
     // insert user_id and liked_id into UserLikes

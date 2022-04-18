@@ -5,7 +5,7 @@ const userData = [
     username: 'Jinx',
     email: 'jinx@gmail.com',
     password: 'potato',
-    // bio:'',
+    bio:'You may not need a father, but I could be your daddy...',
     interest: 'Book nerd'
   },
   {

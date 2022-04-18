@@ -17,7 +17,15 @@ Chatroom.init(
         last_message: {
             type: DataTypes.STRING
         },
-        user_id: {
+        user_id1: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'user',
+                key: 'id'
+            }
+        },
+        user_id2: {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
