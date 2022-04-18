@@ -1,7 +1,8 @@
 const loginBtn = document.getElementById('load-player-btn');
 const signUpBtn = document.getElementById('new-player-btn');
 const loginPrompt = document.getElementById('login-prompt');
-const signUpPrompt = document.getElementById('sign-up-prompt')
+const signUpPrompt = document.getElementById('sign-up-prompt');
+const backBtns = document.querySelectorAll('a');
 
 const toggleDisplayLogin = () => {
     // If not being displayed, display and check if
@@ -37,6 +38,51 @@ const toggleDisplaySignUp = () => {
         signUpPrompt.classList.add('d-none');
     } 
 }
+
+backBtns.forEach( btn => {
+    switch (btn.id) {
+        case 'login-back':
+            btn.addEventListener('click', toggleDisplayLogin)
+            break;
+        case 'signup-back':
+            btn.addEventListener('click', toggleDisplaySignUp)
+            break;
+    }
+})
+
+document.querySelector('#login-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    var locator;
+    var password;
+    for (input of e.target.elements) {
+        switch (input.name) {
+            case 'locator':
+                locator = input.value;
+                break;
+            case 'pass':
+                password = input.value;
+                break;
+        }
+    }
+    const resp = await fetch('/api/users/login', {
+        method: 'POST',
+        body: JSON.stringify({ locator, password}),
+        headers: { 'Content-Type': 'application/json' }
+    })
+
+    console.log(resp);
+
+    if (resp.ok) {
+        document.location.replace('/homepage')
+    } else {
+        alert('Something went terribly wrong')
+    }
+})
+
+document.querySelector('#signup-form').addEventListener('submit', e => {
+    e.preventDefault();
+    
+})
 
 
 

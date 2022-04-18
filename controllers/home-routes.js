@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 
 router.get("/homepage", withAuth, (req, res) => {
   try {
-      res.redirect('/homepage')
+      res.render('homepage')
   } catch (err) {
     res.status(500).json(err);
   }

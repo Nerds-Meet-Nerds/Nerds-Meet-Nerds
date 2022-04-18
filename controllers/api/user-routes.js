@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User } = require('../../models');
+const { Op } = require('sequelize')
 
 
 router.post('/', async (req, res) => {
@@ -25,24 +26,21 @@ router.post('/', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   try {
+    console.log(req.body);
     const userData = await User.findOne({
       where: {
-        username: req.body.username,
+        [Op.or]: [{username: req.body.locator}, {email: req.body.locator}]
       },
     });
 
     if (!userData) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect username. Please try again!' });
+      res.status(400).json({ message: 'Incorrect username, email, or password. Please try again! 1' });
       return;
     }
     const validPassword = await userData.checkPassword(req.body.password);
 
     if (!validPassword) {
-      res
-      .status(400)
-      .json({ message: 'Incorrect password. Please try again!' });
+      res.status(400).json({ message: 'Incorrect username, email, password. Please try again! 2' });
       return;
     }
     req.session.save(() => {
@@ -55,41 +53,15 @@ router.post('/login', async (req, res) => {
         req.session.cookie
         );
         
-        res
-        .status(200)
-        .json({ user: userData, message: 'You are now logged in!' });
+        res.status(200).json({ user: userData, message: 'You are now logged in!' });
       });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
     }
   });
-
-  router.post('/profile/new-bio', async (req, res) => {
-    try {
-        const newBio = await User.create({
-            username: req.body.username,
-            bio: req.body.bio,
-            user_id: req.session.userid
-        })
-        res.status(200).json(newBio)
-    } catch (err) {
-        res.status(500).json(err)
-    }
-})
-
-  router.put('/profile/edit', async (req, res) => {
-    try {
-        const updatedBio = await User.update(
-            { bio: req.body.bio, edited: true },
-            { where: { id: req.body.user_id }})
-        res.status(200).json(updatedBio)
-    } catch (err) {
-        res.status(500).json(err)
-    }
-  })
   
-  router.post('/logout', (req, res) => {
+router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
@@ -98,6 +70,31 @@ router.post('/login', async (req, res) => {
     res.status(404).end();
   }
 });
+
+  //   router.post('/profile/new-bio', async (req, res) => {
+//     try {
+//         const newBio = await User.create({
+//             username: req.body.username,
+//             bio: req.body.bio,
+//             user_id: req.session.userid
+//         })
+//         res.status(200).json(newBio)
+//     } catch (err) {
+//         res.status(500).json(err)
+//     }
+// })
+
+  // router.put('/profile/edit', async (req, res) => {
+  //   try {
+  //       const updatedBio = await User.update(
+  //           { bio: req.body.bio, edited: true },
+  //           { where: { id: req.body.user_id }})
+  //       res.status(200).json(updatedBio)
+  //   } catch (err) {
+  //       res.status(500).json(err)
+  //   }
+  // })
+  
 
 
 module.exports = router;

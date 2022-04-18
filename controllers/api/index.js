@@ -7,4 +7,8 @@ router.use('/users', userRoutes);
 router.use('/chatrooms', chatroomRoutes);
 router.use('/liked', likedRoutes);
 
+router.get('/dev/forcelog', (req, res) => {
+    req.session.destroy()
+})
+
 module.exports = router;
