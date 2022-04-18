@@ -33,13 +33,13 @@
 
     <div class="card text-center top-space">
         <div class="card-header">
-          <h2>{{user.username}}</h2>
+          <h2 id="username"></h2>
         </div>
         <div class="card-body">
-          <h5 class="card-title">Nerd Type: {{user.nerd_type}}</h5> 
-          <p class="card-text">{{user.bio}}</p>
-          <a href="#" class="btn btn-primary yes-btn">YES</a>
-          <a href="#" class="btn btn-primary no-btn">NO</a>
+          <h5 class="card-title">Bio</h5> 
+          <p id="bio"class="card-text"></p>
+          <a id="likeBtn"href="#" class="btn btn-primary yes-btn">YES</a>
+          <a id="dislikeBtn"href="#" class="btn btn-primary no-btn">NO</a>
         </div>
         <div class="card-footer text-muted">
           {{user.updatedAt}}

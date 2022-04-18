@@ -60,6 +60,19 @@ router.post('/login', async (req, res) => {
       res.status(500).json(err);
     }
   });
+
+
+  router.get('/all', async (req, res) => {
+    try {
+      const allUsers = await User.findAll({
+        where: {id: {[Op.not]:req.session.user_id}}
+      })
+      res.status(200).json(allUsers)
+    } catch (err) {
+        res.status(500).json(err)
+    }
+  })
+
   
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
