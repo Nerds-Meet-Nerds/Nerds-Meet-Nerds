@@ -1,14 +1,10 @@
 
-// // import models
-// const User = require('./User');
-// const Nerd_Type = require('./Nerd_Type');
-// const Chatroom = require('./Chatroom');
-// const Liked = require('./Liked');
 
 // import models
 const User = require('./User');
 const Chatroom = require('./Chatroom');
 const User_Likes = require('./User_Likes');
+const Pictures = require('./Pictures')
 // const Nerd_Type = require('./Nerd_Type');
 // const Userdislikes = require('./Userdislikes');
 
@@ -39,32 +35,33 @@ User.hasMany(User_Likes, {
 //     onDelete:"CASCADE"
 //   });
   
-// User.hasMany(Chatroom, {
-//     foreignKey: 'user_id',
-//     onDelete:"CASCADE"
-//   });
+User.hasMany(Chatroom, {
+    foreignKey: 'user_id',
+    onDelete:"CASCADE"
+  });
+User.hasMany(Pictures, {
+    foreignKey: 'user_id',
+    onDelete:"CASCADE"
+  });
   
+Pictures.belongsTo(User, {
+    foreignKey: 'user_id',
+    onDelete:"CASCADE"
+  });
+User_Likes.belongsTo(User, {
+    foreignKey: 'user_id',
+    onDelete:"CASCADE"
+  });
 
-// Nerd_Type.belongsTo(User, {
-//     foreignKey: 'nerd_type',
-//     onDelete:"CASCADE"
-//   })
-// Chatroom.belongsTo(User, {
-//     foreignKey: 'user_id',
-//     onDelete:"CASCADE"
-    
-//   });
-// Liked.belongsTo(User, {
-//     foreignKey: 'user_id',
-//     onDelete:"CASCADE"
-    
-//   });
+Nerd_Type.belongsTo(User, {
+    foreignKey: 'user_id',
+    onDelete:"CASCADE"
+  });
+Chatroom.belongsTo(User, {
+    foreignKey: 'user_id',
+    onDelete:"CASCADE"
 
-    
-    // Nerd_Type.belongsTo(User, {
-    //     foreignKey: 'user_id',
-    //     onDelete:"CASCADE"
-    //   });
+  });
 
 // Currently not being used
 
@@ -86,9 +83,8 @@ User.hasMany(User_Likes, {
   module.exports = {
     User,
     Chatroom,
-    User_Likes
-    // Userdislikes,
-    // Nerd_Type,
+    User_Likes,
+    Pictures
 };
 
 

@@ -34,6 +34,15 @@ User.init(
                 len:[4]
             }
         },
+
+        bio: {
+            type: DataTypes.TEXT,
+            defaultValue: "Talk a little bit about yourself..."
+        },
+
+        interest: {
+            type: DataTypes.TEXT
+        }
        
         
     },
