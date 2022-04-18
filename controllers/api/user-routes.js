@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
       req.session.user_id = userData.id;
       req.session.username = userData.username;
       req.session.loggedIn = true;
-
+      
       res.status(200).json(userData);
     });
   } catch (err) {
@@ -37,39 +37,59 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect username. Please try again!' });
       return;
     }
-
     const validPassword = await userData.checkPassword(req.body.password);
 
     if (!validPassword) {
       res
-        .status(400)
-        .json({ message: 'Incorrect password. Please try again!' });
+      .status(400)
+      .json({ message: 'Incorrect password. Please try again!' });
       return;
     }
-
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.loggedIn = true;
       req.session.username = userData.username;
-
-      req.session = {...userData, loggedIn:true}
+      
       console.log(
         '🚀 ~ file: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
         req.session.cookie
-      );
-
-      res
+        );
+        
+        res
         .status(200)
         .json({ user: userData, message: 'You are now logged in!' });
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  });
 
+  router.post('/profile/new-bio', async (req, res) => {
+    try {
+        const newBio = await User.create({
+            username: req.body.username,
+            bio: req.body.bio,
+            user_id: req.session.userid
+        })
+        res.status(200).json(newBio)
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
 
-router.post('/logout', (req, res) => {
+  router.put('/profile/edit', async (req, res) => {
+    try {
+        const updatedBio = await User.update(
+            { bio: req.body.bio, edited: true },
+            { where: { id: req.body.user_id }})
+        res.status(200).json(updatedBio)
+    } catch (err) {
+        res.status(500).json(err)
+    }
+  })
+  
+  router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
