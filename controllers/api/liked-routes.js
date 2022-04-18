@@ -40,18 +40,6 @@ router.get('/homepage/:id', async (req, res) => {
       }
 })
 
-
-router.get("/homepage", (req, res) => {
-  if (req.session.likedUser) {
-    res.redirect('/homepage')
-  } else {
-    res.render('/landing-page')
-    }
-  })
-    .catch((err) => {
-      res.status(500).json(err);
-});
-
 router.get("/dashboard", (req, res) => {
   res.render("homepage/dashboard", {
     layout: "dashboard"

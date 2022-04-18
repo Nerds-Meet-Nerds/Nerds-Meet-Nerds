@@ -34,7 +34,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended:true }))
 app.use(express.static(`${__dirname}/public`));
 
-// app.use(require('./controllers'))
+app.use(require('./controllers'))
 
 // Runs when client connects
 io.on('connection', async socket => {

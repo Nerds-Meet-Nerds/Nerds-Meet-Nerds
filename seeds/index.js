@@ -14,17 +14,17 @@ const seedAll = async () => {
   await seedUser();
     console.log('\n----- USER  SEEDED -----\n');
 
-  await seedNerd();
-  console.log('\n----- NERD SEEDED -----\n');
-  
-  await seedChat();
-  console.log('\n----- CHAT SEEDED -----\n');
-  
-  await seedLike();
-  console.log('\n----- CHAT SEEDED -----\n');
-  
-  // Currently not being used
-
+    
+    await seedChat();
+    console.log('\n----- CHAT SEEDED -----\n');
+    
+    await seedLike();
+    console.log('\n----- CHAT SEEDED -----\n');
+    
+    // Currently not being used
+    
+    // await seedNerd();
+    // console.log('\n----- NERD SEEDED -----\n');
    // await seedDislike();
    // console.log('\n----- CHAT SEEDED -----\n');
 
