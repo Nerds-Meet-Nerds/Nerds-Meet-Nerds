@@ -6,14 +6,13 @@ const userData = [
     email: 'jinx@gmail.com',
     password: 'potato',
     bio:'You may not need a father, but I could be your daddy...',
-//     interest: 'Book nerd'
+
   },
   {
     username: 'Jade',
     email: 'jade@gmail.com',
     password: 'potato',
-    bio:'I am a wizard',
-//     interest: 'Anime nerd'
+
   },
   
   {
@@ -21,7 +20,7 @@ const userData = [
     email: 'ruby@gmail.com',
     password: 'potato',
     bio:'I love little people',
-//     interest: 'Movie nerd'
+
   }
 
 ];
