@@ -1,0 +1,81 @@
+<body class="splash2">
+
+    {{>navbar}}
+
+    <div id="profile-container-main" class="container-fluid">
+        <div id="profile-container-child" class="row">
+            <div id="pfp-container" class="col">
+                <h2>Hi! I'm {{plainUser.username}}</h2>
+                <div id="pfp-img-container">
+                    <img id="pfp-img" src='{{pic}}'>
+                </div>
+            </div>
+            <div id="bio-container" class="col">
+                <div id="bio-textbox">
+                    <h2 id="bio-h2">Bio</h2>
+                    <p id="bio-text" class="d-flex">{{plainUser.bio}}</p>
+                    <form id="submit-bio-form" class="d-none">
+                        <textarea id="submit-bio-textarea">{{plainUser.bio}}</textarea>
+                        <button id="submit-bio">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div id="footer-container" class="col">
+                <div id="footer-btn-container">
+                    <button id="preferences-btn">
+                        <p id="footer-btn">Preferences</p>
+                    </button> 
+                    <button id="images-btn">
+                        <p id="footer-btn">Images</p>
+                    </button> 
+                    <button id="edit-info-btn">
+                        <p id="footer-btn">Edit Bio</p>
+                    </button> 
+                </div>
+            </div>
+        </div>
+
+        <div id="upload-img-container" class="container-fluid d-none">
+            <div id="upload-img-box" class="row">
+                <form class="col">
+                    <h2>Update Images</h2>
+                    <br>
+                    <br>
+                    <p>upload image URL</p>
+                    <input id="input" type="text" placeholder="Enter image URL">
+                    <br>
+                    <br>
+                    <button>Submit</button>
+                    <br>
+                    <br>
+                    <a href="/profile">Back</a>
+                </form>
+            </div>
+        </div>
+        <div id="edit-info-container" class="container-fluid d-none">
+            <div id="edit-info-box" class="row">
+                <form class="col">
+                    <h2>Update Info</h2>
+                    <br>
+                    <br>
+                    <p>update tags</p>
+                    <input id="input" type="text" placeholder="gamer, programmer, etc...">
+                    <p>edit bio</p>
+                    <input id="bio-input" type="text" placeholder="edit bio">
+                    <br>
+                    <br>
+                    <button>Submit</button>
+                    <br>
+                    <br>
+                    <a href="/profile">Back</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- bootstrap js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/profile.js"></script>
+</body>
