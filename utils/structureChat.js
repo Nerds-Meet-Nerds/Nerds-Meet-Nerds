@@ -1,6 +1,5 @@
 const { Chatroom, User } = require('../models')
 const { Op } = require('sequelize');
-const { set } = require('express/lib/application');
 
 async function structureChat(req) {
     const chatrooms = await Chatroom.findAll( { where: { [Op.or]: [{user_id1: req.session.user_id},{user_id2: req.session.user_id}] }})
