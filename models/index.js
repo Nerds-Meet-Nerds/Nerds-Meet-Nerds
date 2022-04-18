@@ -35,6 +35,33 @@ Pictures.belongsTo(User, {
     foreignKey: 'user_id',
     onDelete:"CASCADE"
   });
+User_Likes.belongsTo(User, {
+    foreignKey: 'user_id',
+    onDelete:"CASCADE"
+  });
+
+Chatroom.belongsTo(User, {
+    foreignKey: 'user_id',
+    onDelete:"CASCADE"
+
+  });
+
+// Currently not being used
+
+
+// module.exports = {
+//   User,
+//   Nerd_Type,
+//   Chatroom,
+//   Liked
+// };
+
+// Userdislikes.hasOne(User, {
+//     foreignKey: 'user_id',
+//     onDelete:"CASCADE"
+//   });
+
+
 
   module.exports = {
     User,
