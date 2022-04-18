@@ -38,14 +38,26 @@ app.use(require('./controllers'))
 
 // Runs when client connects
 io.on('connection', async socket => {
-    console.log('New WS Connection');
-    console.log(socket.id);
-    socket.on('chatMessage', msg => {
-        io.emit('message', msg);
-      });
+    const chatroom_url = socket.handshake.headers.referer
+    const chatroom_id = parseInt(chatroom_url.substring(chatroom_url.indexOf('?')+1,chatroom_url.length))
+    const chatroom_name = `chatroom_${chatroom_url.substring(chatroom_url.indexOf('?')+1,chatroom_url.length)}`
+    socket.on('userJoin', ({current_username}) => {
+        socket.join(chatroom_name)
+        console.log(current_username);
+        socket.broadcast.to(chatroom_name).emit('joinAlert', current_username)
+    })
 
-    socket.emit('message', 'Welcome to Nerds Meet Nerds!')
-    socket.broadcast.emit('message', 'Someone has joined')
+    socket.on('chatMessage', msg => {
+        io.to(chatroom_name).emit('incMessage', msg)
+    })
+    
+    
+
+    socket.on('disconnect', (reason) => {
+        
+    })
+    // socket.emit('message', 'Welcome to Nerds Meet Nerds!')
+    // socket.broadcast.emit('message', 'Someone has joined')
 })
 
 const PORT = process.env.PORT || 3001;

@@ -12,7 +12,7 @@ Chatroom.init(
             autoIncrement: true
         },         
         chat_log: {
-            type: DataTypes.STRING
+            type: DataTypes.TEXT
         },
         last_message: {
             type: DataTypes.STRING

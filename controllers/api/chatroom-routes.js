@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const withAuth = require('../../utils/auth')
 const { Chatroom, User_Likes, User } = require('../../models');
+const { route } = require('../home-routes');
 
 
 router.get("/", withAuth, async (req, res) => {
@@ -41,6 +42,19 @@ router.get("/:id", async (req, res) => {
     res.status(500).json(err);
   }
 })
+
+router.put('/update/:id', async (req, res) => {
+  try {
+    const updChat = await Chatroom.update(
+      { chat_log: req.body.log },
+      { where: { id: req.params.id }})
+
+    res.status(200).json(updChat)
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err)
+  }
+});
 
 router.post('/new-chat', async (req, res) => {
     const {chat_log} = req.body;
