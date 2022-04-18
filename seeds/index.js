@@ -3,6 +3,7 @@ const seedUser = require('./user');
 const seedNerd = require('./nerdType');
 const seedChat =  require('./chatroom')
 const seedLike =  require('./likes')
+const initImages = require('./images.js')
 // const seedDislike =  require('./dislikes')
 const sequelize = require('../config/connection');
 
@@ -20,6 +21,9 @@ const seedAll = async () => {
     
     await seedLike();
     console.log('\n----- CHAT SEEDED -----\n');
+
+
+    await initImages();
     
     // Currently not being used
     
