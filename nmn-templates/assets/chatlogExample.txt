@@ -1,0 +1,14 @@
+Each log should be a long single string templated as such:
+
+each message will be this template
+
+{user_id}:'{message}'|
+
+stringing messages together this way:
+
+{user_id}:'{message}'|{user_id}:'{message}'|{user_id}:'{message}'|
+
+
+exmple:
+
+1:'Hey there cutie! I was thinking that we should hang out!'|3:'Oh hello! Okay I would be interested. What are you interested in?'|1:'I like blowing up stuff! Explosions are really pretty'|3:'Oh... that's interesting'|

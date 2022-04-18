@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const withAuth = require('../../utils/auth')
 const { Chatroom, User_Likes, User } = require('../../models');
+const { route } = require('../home-routes');
 
 
 router.get("/", withAuth, async (req, res) => {
@@ -17,18 +18,23 @@ router.get("/", withAuth, async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
-    const fChatroom = await Chatroom.findByPk(req.params.id, {
-      include: [
-        User,
-        {
-          model: User_Likes,
-          include: [User],
-        },
-      ],
-    })
+    const fChatroom = await Chatroom.findByPk(req.params.id)
+    const current_user = await User.findOne( { where: { id: req.session.user_id } } )
+    var other_user;
+    switch (current_user.id) {
+      case fChatroom.user_id1:
+        other_user = await User.findOne( { where: { id: fChatroom.user_id2 } } )
+        break;
+      case fChatroom.user_id2:
+        other_user = await User.findOne( { where: { id: fChatroom.user_id1 } } )
+        break;
+    }
     if (fChatroom) {
-      const chatroomData = fChatroom.get({ plain: true });
-      res.render("single-chat", { ...chatroomData });
+      var chatroomData = fChatroom.get({ plain: true });
+      chatroomData.current_user_id = current_user.id;
+      chatroomData.current_username = current_user.username;
+      chatroomData.other_username = other_user.username;
+      res.status(200).json(chatroomData)
     } else {
       res.status(404).end();
     }
@@ -36,6 +42,19 @@ router.get("/:id", async (req, res) => {
     res.status(500).json(err);
   }
 })
+
+router.put('/update/:id', async (req, res) => {
+  try {
+    const updChat = await Chatroom.update(
+      { chat_log: req.body.log },
+      { where: { id: req.params.id }})
+
+    res.status(200).json(updChat)
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err)
+  }
+});
 
 router.post('/new-chat', async (req, res) => {
     const {chat_log} = req.body;
