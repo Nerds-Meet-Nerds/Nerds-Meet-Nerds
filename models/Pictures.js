@@ -14,6 +14,7 @@ Pictures.init(
 
     pic: {
         type: DataTypes.BLOB("long"),
+        
       },   
     
     user_id: {
