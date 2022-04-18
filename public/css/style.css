@@ -442,7 +442,7 @@ background-color: rgb(242, 164, 249);
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    /* height: 100vh; */
     top: 0;
     left: 0;
 }
@@ -453,6 +453,7 @@ background-color: rgb(242, 164, 249);
         width: 30%;
         min-width: 20rem;
         min-height: 18rem;
+        margin-top: 40rem;
     }
 #edit-info-container {
     position:absolute;
