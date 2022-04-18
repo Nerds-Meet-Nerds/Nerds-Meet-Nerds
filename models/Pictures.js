@@ -13,19 +13,14 @@ Pictures.init(
     },
 
     pic: {
-<<<<<<< HEAD
-        type: DataTypes.BLOB("long"),
-        
-      },   
-=======
         type: DataTypes.STRING,
         defaultValue: '/assets/images/default.png'
-    },   
+    },  
+     
 
     // pic_primary: {
     //     type: DataTypes.BOOLEAN,
     // },   
->>>>>>> db1babf39e2faa4187e650315c772a053179c854
     
     user_id: {
         type: DataTypes.INTEGER,
