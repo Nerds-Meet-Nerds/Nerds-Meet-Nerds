@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const withAuth = require('../utils/auth')
+const structureChat = require('../utils/structureChat')
 const { Chatroom, User, User_Likes } = require('../models');
 
 router.get('/', (req, res) => {
@@ -28,31 +29,23 @@ router.get('/profile', withAuth, (req, res) => {
 
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
-    const chatrooms = await Chatroom.findAll( { where: { user_id1: req.session.user_id } } )
-    const chatroomsData = chatrooms.map(chatroom => chatroom.get({ plain: true }))
-    var matches = [];
+    const chatroomData = await structureChat(req)
 
-    for (chat of chatroomsData) {
-      const otheruser = await User.findByPk(chat.user_id2)
-      chat.othername = otheruser.username
-      matches.push(chat)
-    }
-
-    console.log(matches);
-    res.render('dashboard', {matches})
+    res.render('dashboard', {chatroomData})
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
   }
 })
 
-// router.get('/chatroom', withAuth, (req, res) => {
-//   try {
-    
-//   } catch (err) {
-    
-//   }
-// })
+router.get('/chatroom', withAuth, (req, res) => {
+  try {
+    res.render('chatroom')
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+})
 // router.get('/chatroom/:id')
 
 router.get("/login", (req, res) => {
