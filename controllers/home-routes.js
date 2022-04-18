@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const withAuth = require('../utils/auth')
 const { Chatroom, User, User_Likes } = require('../models');
 
 router.get('/', (req, res) => {
@@ -9,7 +10,13 @@ router.get('/', (req, res) => {
   }
 })
 
-// router.get('/homepage')
+router.get("/homepage", withAuth, (req, res) => {
+  try {
+      res.redirect('/homepage')
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 // router.get('/dashboard')
 // router.get('/chatroom')
 // router.get('/chatroom/:id')

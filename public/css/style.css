@@ -4,6 +4,10 @@
     background-color: aquamarine;
 } */
 
+body {
+    position: relative;
+}
+
 #top {
     /* border: 5px solid rgb(255, 0, 0); */
     display: flex;
@@ -129,15 +133,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    /* height: 100vh; */
     top: 0;
     left: 0;
+    transform: translate(50%, 50%);
 }
     #login-box {
         background-color: white;
         border: 1px solid black;
-        height: 30%;
-        width: 30%;
+        /* height: 30%;
+        width: 30%; */
         min-width: 20rem;
         min-height: 18rem;
     }
@@ -151,15 +156,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    /* height: 100vh; */
     top: 0;
     left: 0;
+    transform: translate(50%, 50%);
 }
     #sign-up-box {
         background-color: white;
         border: 1px solid black;
-        height: 40%;
-        width: 30%;
+        /* height: 40%;
+        width: 30%; */
         min-width: 20rem;
         min-height: 25rem;
     }
