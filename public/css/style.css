@@ -355,18 +355,16 @@ background-color: rgb(242, 164, 249);
         #pfp-img-container {
             position: relative;
             border: 1px solid black;
-            border-radius: 50%;
+            /* border-radius: 50%; */
             height: 20rem;
             width: 20rem;
             overflow: hidden;
-            
         }
             #pfp-img {
                 position: absolute;
-                width: 200%;
-                height: auto;
-                top: -1.2rem;
-                left: -8.5rem;
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
             }
 
     #bio-container {
