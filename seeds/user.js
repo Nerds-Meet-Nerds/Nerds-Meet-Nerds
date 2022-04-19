@@ -106,6 +106,20 @@ const userData = [
     bio:'Be my hubby, I need papers',
 
   },
+  {
+    username: 'Gary Almes',
+    email: 'garytalmes@gmail.com',
+    password: 'potato',
+    bio:"Im going to slide into your Dm's like a Marquee, with a scrollamount of 100",
+
+  },
+  {
+    username: 'Paul',
+    email: 'paul@gmail.com',
+    password: 'potato',
+    bio:"My little pony isn't the only thing I ride ;)",
+
+  },
   
 ];
 
