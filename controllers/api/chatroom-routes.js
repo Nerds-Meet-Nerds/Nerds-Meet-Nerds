@@ -66,19 +66,9 @@ router.post('/create/:id', async (req, res) => {
 })
 
 router.delete('/destroy/:id', async (req, res) => {
-    const {chat_log} = req.body;
-    const {chatroom_id} = req.session;
   try {
-      await Chatroom.destroy({ chat_log, chatroom_id})
-      await User_Likes.destroy(
-            {where: {id: req.params.id}
-        })
-        const updatedChats = await Chatroom.findAll({ include: 
-            [
-                {model: User, attributes: ['username'] }, 
-                {model: User_Likes, include: [{model: User, attributes: ['username']}]}
-            ]});
-      res.status(200).json(updatedChats)
+    const delChatroom = await Chatroom.destroy({where: {id: req.params.id}});
+    res.status(200).json(delChatroom);
   } catch (err) {
       console.log(err);
       res.status(500).json(err)
