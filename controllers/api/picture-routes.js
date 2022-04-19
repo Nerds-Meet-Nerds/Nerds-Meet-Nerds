@@ -13,7 +13,7 @@ router.get('/getImage/:id', async (req,res) => {
 
 router.post('/uploadImage', async (req,res) => {
     try {
-        await Pictures.destroy({where: { pic: '/assets/images/default.png' }})
+        await Pictures.destroy({where: { pic: '/assets/images/default.png', user_id: req.session.user_id }})
         const uploadedImg = await Pictures.create({ pic: req.body.pic, user_id: req.session.user_id})
         res.status(200).json(uploadedImg);
     } catch (err) {
