@@ -11,9 +11,11 @@ router.get('/', (req, res) => {
   }
 });
 
-router.get("/homepage", withAuth, (req, res) => {
+router.get("/homepage", withAuth, async (req, res) => {
   try {
-      res.render('homepage')
+    const currentUser = await User.findByPk(req.session.user_id, {include: [Pictures]})
+    const plainUser = currentUser.get({plain: true})
+      res.render('homepage', {plainUser, pic: plainUser.pictures})
   } catch (err) {
     res.status(500).json(err);
   }

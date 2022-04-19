@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Pictures } = require('../../models');
 const { Op } = require('sequelize')
 
 
@@ -65,7 +65,8 @@ router.post('/login', async (req, res) => {
   router.get('/all', async (req, res) => {
     try {
       const allUsers = await User.findAll({
-        where: {id: {[Op.not]:req.session.user_id}}
+        where: {id: {[Op.not]:req.session.user_id}}, 
+        include: [Pictures]
       })
       res.status(200).json(allUsers)
     } catch (err) {

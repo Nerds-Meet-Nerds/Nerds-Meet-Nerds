@@ -15,19 +15,35 @@ async function newUser() {
 
 async function init(){
     let allUsers = await newUser()
-    let firstUser = allUsers.pop()
-    username.innerHTML = firstUser.username;
-    bio.innerHTML = firstUser.bio
+    function domSetUp(){
+        let firstUser = allUsers.pop()
+        username.innerHTML = firstUser.username;
+        bio.innerHTML = firstUser.bio
+    }
+    domSetUp();
     dislike.addEventListener('click', e => {
         if(allUsers.length){
-            let currentUser = allUsers.pop()
-            username.innerHTML = currentUser.username;
-            bio.innerHTML = currentUser.bio
+            // let currentUser = allUsers.pop()
+            // username.innerHTML = currentUser.username;
+            // bio.innerHTML = currentUser.bio
+            domSetUp();
+        }else{
+            alert("That's everyone!")
+        }
+    });
+    like.addEventListener('click', e => {
+        if(allUsers.length){
+            // let currentUser = allUsers.pop()
+            // username.innerHTML = currentUser.username;
+            // bio.innerHTML = currentUser.bio
+            domSetUp();
         }else{
             alert("That's everyone!")
         }
     });
 }
+
+
 
 
 init()
