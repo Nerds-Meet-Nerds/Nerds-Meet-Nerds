@@ -2,7 +2,8 @@ async function init() {
     const chatWindow = document.querySelector('#chat-window');
     const chatroom_id = document.location.search.substring(1);
     const {current_user_id, current_username, other_username} = await getChatlog()
-    
+
+        document.querySelector('#msg-name').innerText = other_username
     
     function parseChatlog(chatlog) {
         let chatArray = chatlog.split('|')
