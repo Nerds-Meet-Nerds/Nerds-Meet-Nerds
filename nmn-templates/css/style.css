@@ -204,6 +204,20 @@
     background-color: red;
 }
 
+@media (min-width: 800px){
+    .caroHt{
+        object-fit: cover;
+        width: 100%;
+        height: 600px;
+    }
+    .desktop{
+        margin-left: 20%;
+        margin-right: 20%
+    }
+}
+
+
+
         /*----------------MEDIA QUERY-------------*/
         /* TODO: ADD MEDIA QUERY FOR HEIGHT */
 @media (max-width: 8000px) { 
