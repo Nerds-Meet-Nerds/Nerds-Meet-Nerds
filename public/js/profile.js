@@ -81,3 +81,7 @@ document.querySelector('#upload-img-form').addEventListener('submit', async e =>
         alert('Something went terribly wrong...')
     }
 })
+
+document.querySelector('#preferences-btn').addEventListener('click', e => {
+    alert('For \'Prefrence\' options, please subscribe for premium\nCashapp: $PremiumForNerds$')
+})
