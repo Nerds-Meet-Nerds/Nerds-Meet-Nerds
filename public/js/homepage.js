@@ -27,6 +27,7 @@ async function init(){
             newLi.outerHTML = '<li data-target="#carouselExampleIndicators" data-slide-to="0"></li>';
             const newDiv = document.createElement('div')
             newDiv.classList.add('carousel-item')
+            newDiv.id = firstUser.id
             newDiv.innerHTML = `<img class="d-block w-100 caroHt" src="${firstUser.pictures[index].pic}" alt="Slide">`
             if (index == 0) {
                 newDiv.classList.add('active')
@@ -44,11 +45,15 @@ async function init(){
             alert("That's everyone!")
         }
     });
-    like.addEventListener('click', e => {
+    like.addEventListener('click', async e => {
         if(allUsers.length){
-            domSetUp();
-        }else{
-            alert("That's everyone!")
+            const resp = await fetch(`/api/chatrooms/create/${document.querySelector('.carousel-item').id}`, {
+                method: 'POST'
+            })
+            const respData = await resp.json()
+            if (resp.ok) {
+                document.location.replace(`/chatroom?${respData}`)
+            }
         }
     });
 }

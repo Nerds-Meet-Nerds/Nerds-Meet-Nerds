@@ -12,7 +12,8 @@ Chatroom.init(
             autoIncrement: true
         },         
         chat_log: {
-            type: DataTypes.TEXT
+            type: DataTypes.TEXT,
+            defaultValue: ''
         },
         last_message: {
             type: DataTypes.STRING
