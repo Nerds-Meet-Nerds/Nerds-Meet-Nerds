@@ -2,6 +2,7 @@ const router = require('express').Router();
 const withAuth = require('../utils/auth')
 const structureChat = require('../utils/structureChat')
 const { Chatroom, User, User_Likes, Pictures } = require('../models');
+const req = require('express/lib/request');
 
 router.get('/', (req, res) => {
   if (req.session.loggedIn) {
@@ -56,6 +57,10 @@ router.get('/chatroom', withAuth, (req, res) => {
     res.status(500).json(err);
   }
 })
+
+
+
+
 // router.get('/chatroom/:id')
 
 // router.get("/login", (req, res) => {

@@ -37,10 +37,19 @@ const editBio = () => {
     toTextArea();
 }
 
-const updateBio = (e) => {
+const updateBio = async (e) => {
     e.preventDefault();
-    e.target.elements[0].value
-    console.log(e.target.elements[0].value)
+    const newBio = e.target.elements[0].value
+    const resp = await fetch('/api/users/updateBio', {
+        method: 'PUT',
+        body: JSON.stringify({newBio}),
+        headers: { 'Content-Type':'application/json' }
+    })
+    if (resp.ok) {
+        document.location.reload()
+    } else {
+        alert('Something went terribly wrong...')
+    }
 }
 
 

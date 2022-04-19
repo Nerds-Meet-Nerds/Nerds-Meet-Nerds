@@ -85,6 +85,18 @@ router.post('/logout', (req, res) => {
   }
 });
 
+router.put('/updateBio', async (req, res) => {
+  try {
+    const updUser = await User.update(
+      {bio: req.body.newBio},
+      {where: {id: req.session.user_id}})
+    res.status(200).json(updUser);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+})
+
   //   router.post('/profile/new-bio', async (req, res) => {
 //     try {
 //         const newBio = await User.create({
