@@ -37,10 +37,19 @@ const editBio = () => {
     toTextArea();
 }
 
-const updateBio = (e) => {
+const updateBio = async (e) => {
     e.preventDefault();
-    e.target.elements[0].value
-    console.log(e.target.elements[0].value)
+    const newBio = e.target.elements[0].value
+    const resp = await fetch('/api/users/updateBio', {
+        method: 'PUT',
+        body: JSON.stringify({newBio}),
+        headers: { 'Content-Type':'application/json' }
+    })
+    if (resp.ok) {
+        document.location.reload()
+    } else {
+        alert('Something went terribly wrong...')
+    }
 }
 
 
@@ -57,3 +66,18 @@ submitBioForm.addEventListener('submit', updateBio);
 // }
 
 // getImage();
+
+
+document.querySelector('#upload-img-form').addEventListener('submit', async e => {
+    e.preventDefault()
+    const resp = await fetch('/api/pictures/uploadImage', {
+        method: 'POST',
+        body: JSON.stringify({pic: e.target.elements.imgURL.value}),
+        headers: { 'Content-Type':'application/json' }
+    })
+    if (resp.ok) {
+        document.location.reload()
+    } else {
+        alert('Something went terribly wrong...')
+    }
+})

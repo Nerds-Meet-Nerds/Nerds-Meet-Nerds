@@ -30,7 +30,7 @@ async function init() {
         const msg = e.target.msg.value;
         const resp = await fetch(`/api/chatrooms/update/${chatroom_id}`, {
             method: 'PUT',
-            body: JSON.stringify({log:`${chat_log}${current_user_id}:\'${msg}\'|`}),
+            body: JSON.stringify({log:`${chat_log}${current_user_id}:\'${msg}\'|`, last: msg}),
             headers: { 'Content-Type': 'application/json' }
         })
         if (resp.ok) {
@@ -55,6 +55,18 @@ async function init() {
     
     
     /* ----------------------------Main page setup---------------------------------------*/
+
+    document.querySelector('#leave-room-btn').addEventListener('click', async e => {
+        e.preventDefault()
+        const resp = await fetch(`/api/chatrooms/destroy/${chatroom_id}`, {
+            method: 'DELETE'
+        })
+        if (resp.ok) {
+            document.location.replace('/dashboard')
+        } else {
+            alert('Something went terribly wrong...')
+        }
+    })
     
     async function renderChatlog() {
         const {parsedData} = await getChatlog()

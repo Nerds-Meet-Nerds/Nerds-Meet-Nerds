@@ -2,6 +2,7 @@ const router = require('express').Router();
 const withAuth = require('../utils/auth')
 const structureChat = require('../utils/structureChat')
 const { Chatroom, User, User_Likes, Pictures } = require('../models');
+const req = require('express/lib/request');
 
 router.get('/', (req, res) => {
   if (req.session.loggedIn) {
@@ -25,9 +26,7 @@ router.get('/profile', withAuth, async (req, res) => {
   try {
     const currentUser = await User.findByPk(req.session.user_id, {include: [Pictures]})
     const plainUser = currentUser.get({plain: true})
-    console.log(plainUser);
-    console.log(plainUser.pictures[0].pic)
-    res.render('profile', {plainUser, pic: plainUser.pictures[0].pic})
+    res.render('profile', {plainUser, pic: plainUser.pictures[plainUser.pictures.length-1].pic})
   } catch (err) {
     res.status(500).json(err);
   }
@@ -37,7 +36,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
   try {
     var chatroomData = await structureChat(req);
     for (chatroom of chatroomData) {
-      const pic = await Pictures.findByPk(chatroom.user_id2)
+      const pic = await Pictures.findOne({ where: {user_id: chatroom.user_id2} })
       const picData = pic.get({plain:true})
       chatroom.display = picData
     }
@@ -58,6 +57,10 @@ router.get('/chatroom', withAuth, (req, res) => {
     res.status(500).json(err);
   }
 })
+
+
+
+
 // router.get('/chatroom/:id')
 
 // router.get("/login", (req, res) => {
