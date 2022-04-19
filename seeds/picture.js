@@ -231,6 +231,36 @@ const picData = [
       user_id: 15,
     
   },
+  {
+      pic:'https://cdn.discordapp.com/attachments/963140396433674243/965996331250384956/sdfds.gif',
+      user_id: 16,
+    
+  },
+  {
+      pic:'https://cdn.discordapp.com/attachments/963140396433674243/965995724930179082/fds.gif',
+      user_id: 16,
+    
+  },
+  {
+      pic:'https://cdn.discordapp.com/attachments/963140396433674243/965995492221788190/unknown.png',
+      user_id: 16,
+    
+  },
+  {
+      pic:'https://cdn.discordapp.com/attachments/946133924524998712/966005331417268244/unknown.png',
+      user_id: 17,
+    
+  },
+  {
+      pic:'https://cdn.discordapp.com/attachments/963140396433674243/965999613855268914/unknown.png',
+      user_id: 17,
+    
+  },
+  {
+      pic:'https://cdn.discordapp.com/attachments/963140396433674243/966000097592758373/unknown.png',
+      user_id: 17,
+    
+  },
 ];
 
 const seedPicture = () => Pictures.bulkCreate(picData);
