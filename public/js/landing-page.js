@@ -4,6 +4,7 @@ const loginPrompt = document.getElementById('login-prompt');
 const signUpPrompt = document.getElementById('sign-up-prompt');
 const backBtns = document.querySelectorAll('a');
 
+
 const toggleDisplayLogin = () => {
     // If not being displayed, display and check if
     //  signup displaying. If it is, toggle it off.
@@ -79,10 +80,33 @@ document.querySelector('#login-form').addEventListener('submit', async e => {
     }
 })
 
-document.querySelector('#signup-form').addEventListener('submit', e => {
+document.querySelector('#signup-form').addEventListener('submit', async e => {
     e.preventDefault();
-    
-})
+    const username = e.target.elements.username.value;
+    const email = e.target.elements.email.value;
+    const password = e.target.elements.password.value;
+    const conPass = e.target.elements.con_pass.value;
+    console.log(username, email, password, conPass);
+
+    if(username && email && password && conPass){
+        if(password === conPass) {
+            const resp = await fetch('/api/users/signup', {
+                method: 'POST', 
+                body: JSON.stringify({username, email, password}),
+                headers: {'Content-Type': 'application/json'}
+            });
+            if(resp.ok){
+                document.location.replace('/profile');
+            }else {
+                alert('Something went terribly wrong!');
+            }
+        }else {
+            alert('Your password does not match.')
+        }
+    }else {
+        alert('Please fill in each field.')
+    }
+});
 
 
 
