@@ -25,9 +25,7 @@ router.get('/profile', withAuth, async (req, res) => {
   try {
     const currentUser = await User.findByPk(req.session.user_id, {include: [Pictures]})
     const plainUser = currentUser.get({plain: true})
-    console.log(plainUser);
-    console.log(plainUser.pictures[0].pic)
-    res.render('profile', {plainUser, pic: plainUser.pictures[0].pic})
+    res.render('profile', {plainUser, pic: plainUser.pictures[plainUser.pictures.length-1].pic})
   } catch (err) {
     res.status(500).json(err);
   }

@@ -57,3 +57,18 @@ submitBioForm.addEventListener('submit', updateBio);
 // }
 
 // getImage();
+
+
+document.querySelector('#upload-img-form').addEventListener('submit', async e => {
+    e.preventDefault()
+    const resp = await fetch('/api/pictures/uploadImage', {
+        method: 'POST',
+        body: JSON.stringify({pic: e.target.elements.imgURL.value}),
+        headers: { 'Content-Type':'application/json' }
+    })
+    if (resp.ok) {
+        document.location.reload()
+    } else {
+        alert('Something went terribly wrong...')
+    }
+})
