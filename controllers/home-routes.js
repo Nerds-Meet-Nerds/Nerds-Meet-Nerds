@@ -54,28 +54,16 @@ router.get('/chatroom', withAuth, (req, res) => {
 })
 // router.get('/chatroom/:id')
 
-router.get("/login", (req, res) => {
-  try {
-    if (req.session.loggedIn) {
-      res.redirect('/homepage')
-    } else {
-      res.render('/landing-page')
-    }
-  } catch (err) {
-    res.status(500).json(err)
-  }
-})
-
-router.get("/signup", (req, res) => {
-  try {
-    if (req.session.loggedIn) {
-      res.redirect('/profile')
-    } else {
-      res.render('/landing-page')
-      }
-  } catch (err) {
-    res.status(500).json(err);
-  }
-})
+// router.get("/login", (req, res) => {
+//   try {
+//     if (req.session.loggedIn) {
+//       res.redirect('/homepage')
+//     } else {
+//       res.render('/landing-page')
+//     }
+//   } catch (err) {
+//     res.status(500).json(err)
+//   }
+// })
 
 module.exports = router;

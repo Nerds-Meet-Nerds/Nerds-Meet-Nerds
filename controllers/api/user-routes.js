@@ -120,5 +120,26 @@ router.post('/logout', (req, res) => {
     }
   })
 
+  router.post("/signup", async (req, res) => {
+    try {
+      const newUser = await User.create(req.body)
+      const newPfp = await Pictures.create({user_id: newUser.id});
+      req.session.save(() => {
+        req.session.user_id = newUser.id;
+        req.session.loggedIn = true;
+        req.session.username = newUser.username;
+        console.log(req.session);
+        console.log( 
+          '🚀 ~ file: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
+          req.session.cookie
+          );
+          
+          res.status(200).json(newUser);
+        });
+
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  })
 
 module.exports = router;
