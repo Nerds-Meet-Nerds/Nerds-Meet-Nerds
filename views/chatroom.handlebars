@@ -26,7 +26,7 @@
             </div>
             <form id="chat-footer">
                 <h4>Send a message</h4>
-                <input id="send-msg" name="msg" type="text" placeholder="Enter message..."/>
+                <textarea name="msg" id="send-msg" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' placeholder="Enter message..."></textarea>
                 <button>Send</button>
             </form>
         </div>

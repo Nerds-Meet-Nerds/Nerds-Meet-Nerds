@@ -554,6 +554,7 @@ justify-content: center;
         overflow-y: scroll;
         align-items: flex-end;
         margin-top: 1rem;
+        min-height: 20rem;
     }
         #chat-sent {
             border: 1px solid black;

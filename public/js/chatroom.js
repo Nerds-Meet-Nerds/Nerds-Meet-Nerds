@@ -2,7 +2,8 @@ async function init() {
     const chatWindow = document.querySelector('#chat-window');
     const chatroom_id = document.location.search.substring(1);
     const {current_user_id, current_username, other_username} = await getChatlog()
-    
+
+        document.querySelector('#msg-name').innerText = other_username
     
     function parseChatlog(chatlog) {
         let chatArray = chatlog.split('|')
@@ -53,8 +54,33 @@ async function init() {
         chatWindow.scrollTop = chatWindow.scrollHeight;
     })
     
+        document.querySelector('#send-msg').addEventListener('keydown', async e => {
+            if(e.key === "Enter"&& !e.shiftKey){            
+                e.preventDefault();
+                const {chat_log} = await getChatlog()
+                const msg = document.querySelector('#send-msg').value;
+                const resp = await fetch(`/api/chatrooms/update/${chatroom_id}`, {
+                    method: 'PUT',
+                    body: JSON.stringify({log:`${chat_log}${current_user_id}:\'${msg}\'|`, last: msg}),
+                    headers: { 'Content-Type': 'application/json' }
+                })
+                if (resp.ok) {
+                    socket.emit(`chatMessage`, msg)
+                    appendSendChat(msg)
+                    chatWindow.scrollTop = chatWindow.scrollHeight;
+                    document.querySelector('#send-msg').value = ''
+                    document.querySelector('#send-msg').focus()
+                } else {
+                    alert('Something went terribly wrong')
+                }
+            }
+        })
+    
     
     /* ----------------------------Main page setup---------------------------------------*/
+
+
+
 
     document.querySelector('#leave-room-btn').addEventListener('click', async e => {
         e.preventDefault()
