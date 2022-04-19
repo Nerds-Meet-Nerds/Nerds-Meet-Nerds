@@ -15,6 +15,10 @@ Chatroom.belongsTo(User, {
   foreignKey: 'user_id1',
   onDelete:"CASCADE"
 });
+Chatroom.belongsTo(User, {
+  foreignKey: 'user_id2',
+  onDelete:"CASCADE"
+});
 
 User_Likes.belongsTo(User, {
   foreignKey: 'user_id',
@@ -38,12 +42,6 @@ Pictures.belongsTo(User, {
 User_Likes.belongsTo(User, {
     foreignKey: 'user_id',
     onDelete:"CASCADE"
-  });
-
-Chatroom.belongsTo(User, {
-    foreignKey: 'user_id',
-    onDelete:"CASCADE"
-
   });
 
 

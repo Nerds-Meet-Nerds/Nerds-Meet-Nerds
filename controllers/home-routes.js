@@ -35,8 +35,14 @@ router.get('/profile', withAuth, async (req, res) => {
 
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
-    const chatroomData = await structureChat(req)
+    var chatroomData = await structureChat(req);
+    for (chatroom of chatroomData) {
+      const pic = await Pictures.findByPk(chatroom.user_id2)
+      const picData = pic.get({plain:true})
+      chatroom.display = picData
+    }
 
+    console.log(chatroomData);
     res.render('dashboard', {chatroomData})
   } catch (err) {
     console.error(err);
