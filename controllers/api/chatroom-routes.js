@@ -56,15 +56,10 @@ router.put('/update/:id', async (req, res) => {
   }
 });
 
-router.post('/new-chat', async (req, res) => {
-    const {chat_log} = req.body;
-    const {userid} = req.session;
+router.post('/create/:id', async (req, res) => {
   try {
-      const newChat = await Chatroom.create({
-        chat_log,
-        user_id: userid
-    })
-      res.status(200).json(newChat)
+      const newChatroom = await Chatroom.create({ user_id1: req.session.user_id, user_id2: req.params.id })
+      res.status(200).json(newChatroom.id);
   } catch (err) {
       res.status(500).json(err)
   }
