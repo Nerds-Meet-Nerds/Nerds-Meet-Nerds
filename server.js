@@ -40,15 +40,14 @@ app.use(require('./controllers'))
 io.on('connection', async socket => {
     const chatroom_url = socket.handshake.headers.referer
     const chatroom_id = parseInt(chatroom_url.substring(chatroom_url.indexOf('?')+1,chatroom_url.length))
-    const chatroom_name = `chatroom_${chatroom_url.substring(chatroom_url.indexOf('?')+1,chatroom_url.length)}`
-    socket.on('userJoin', ({current_username}) => {
+    const chatroom_name = `chatroom_${chatroom_id}`
+    socket.on('userJoin', current_username => {
         socket.join(chatroom_name)
-        console.log(current_username);
         socket.broadcast.to(chatroom_name).emit('joinAlert', current_username)
     })
 
     socket.on('chatMessage', msg => {
-        io.to(chatroom_name).emit('incMessage', msg)
+        socket.broadcast.to(chatroom_name).emit('incMessage', msg)
     })
     
     
