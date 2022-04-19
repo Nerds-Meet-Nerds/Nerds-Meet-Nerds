@@ -1,8 +1,9 @@
 const like = document.getElementById('likeBtn');
 const dislike = document.getElementById('dislikeBtn');
 const username = document.getElementById("username"); 
-const bio = document.getElementById("bio"); 
-
+const bio = document.getElementById("bio");
+const caro = document.querySelector('.carousel-inner');
+const caroInd = document.querySelector('.carousel-indicators');
 
 
 async function newUser() {
@@ -19,13 +20,25 @@ async function init(){
         let firstUser = allUsers.pop()
         username.innerHTML = firstUser.username;
         bio.innerHTML = firstUser.bio
+        caroInd.innerHTML = ''
+        caro.innerHTML = ''
+        for (let index in firstUser.pictures) {
+            const newLi = document.createElement('li');
+            newLi.outerHTML = '<li data-target="#carouselExampleIndicators" data-slide-to="0"></li>';
+            const newDiv = document.createElement('div')
+            newDiv.classList.add('carousel-item')
+            newDiv.innerHTML = `<img class="d-block w-100 caroHt" src="${firstUser.pictures[index].pic}" alt="Slide">`
+            if (index == 0) {
+                newDiv.classList.add('active')
+                newLi.classList.add('active')
+            }
+            caro.append(newDiv)
+            caroInd.append(newLi)
+        }
     }
     domSetUp();
     dislike.addEventListener('click', e => {
         if(allUsers.length){
-            // let currentUser = allUsers.pop()
-            // username.innerHTML = currentUser.username;
-            // bio.innerHTML = currentUser.bio
             domSetUp();
         }else{
             alert("That's everyone!")
@@ -33,9 +46,6 @@ async function init(){
     });
     like.addEventListener('click', e => {
         if(allUsers.length){
-            // let currentUser = allUsers.pop()
-            // username.innerHTML = currentUser.username;
-            // bio.innerHTML = currentUser.bio
             domSetUp();
         }else{
             alert("That's everyone!")
