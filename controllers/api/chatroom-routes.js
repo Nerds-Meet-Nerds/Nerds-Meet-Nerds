@@ -46,7 +46,7 @@ router.get("/:id", async (req, res) => {
 router.put('/update/:id', async (req, res) => {
   try {
     const updChat = await Chatroom.update(
-      { chat_log: req.body.log },
+      { chat_log: req.body.log, last_message: req.body.last },
       { where: { id: req.params.id }})
 
     res.status(200).json(updChat)

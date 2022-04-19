@@ -30,7 +30,7 @@ async function init() {
         const msg = e.target.msg.value;
         const resp = await fetch(`/api/chatrooms/update/${chatroom_id}`, {
             method: 'PUT',
-            body: JSON.stringify({log:`${chat_log}${current_user_id}:\'${msg}\'|`}),
+            body: JSON.stringify({log:`${chat_log}${current_user_id}:\'${msg}\'|`, last: msg}),
             headers: { 'Content-Type': 'application/json' }
         })
         if (resp.ok) {

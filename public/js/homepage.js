@@ -23,22 +23,22 @@ async function init(){
         caroInd.innerHTML = ''
         caro.innerHTML = ''
         for (let index in firstUser.pictures) {
-            const newLi = document.createElement('li');
-            newLi.outerHTML = '<li data-target="#carouselExampleIndicators" data-slide-to="0"></li>';
             const newDiv = document.createElement('div')
             newDiv.classList.add('carousel-item')
             newDiv.id = firstUser.id
             newDiv.innerHTML = `<img class="d-block w-100 caroHt" src="${firstUser.pictures[index].pic}" alt="Slide">`
             if (index == 0) {
                 newDiv.classList.add('active')
-                newLi.classList.add('active')
+                caroInd.innerHTML = caroInd.innerHTML+'<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>'
+            } else {
+                caroInd.innerHTML = caroInd.innerHTML+'<li data-target="#carouselExampleIndicators" data-slide-to="0"></li>'
             }
             caro.append(newDiv)
-            caroInd.append(newLi)
         }
     }
     domSetUp();
     dislike.addEventListener('click', e => {
+        e.preventDefault()
         if(allUsers.length){
             domSetUp();
         }else{
@@ -46,6 +46,7 @@ async function init(){
         }
     });
     like.addEventListener('click', async e => {
+        e.preventDefault()
         if(allUsers.length){
             const resp = await fetch(`/api/chatrooms/create/${document.querySelector('.carousel-item').id}`, {
                 method: 'POST'

@@ -16,7 +16,8 @@ Chatroom.init(
             defaultValue: ''
         },
         last_message: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            defaultValue: 'No Messages Sent'
         },
         user_id1: {
             type: DataTypes.INTEGER,

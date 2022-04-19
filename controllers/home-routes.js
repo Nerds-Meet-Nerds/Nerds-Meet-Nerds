@@ -37,7 +37,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
   try {
     var chatroomData = await structureChat(req);
     for (chatroom of chatroomData) {
-      const pic = await Pictures.findByPk(chatroom.user_id2)
+      const pic = await Pictures.findOne({ where: {user_id: chatroom.user_id2} })
       const picData = pic.get({plain:true})
       chatroom.display = picData
     }
